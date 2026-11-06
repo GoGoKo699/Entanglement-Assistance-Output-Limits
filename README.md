@@ -33,6 +33,12 @@ The proof combines a state inside the channel image that dominates every output 
 
 The immediate predecessor bounds the advantage using input dimension and explicitly asks whether an output-only bound exists. An earlier output bound retains a channel-dependent spectral factor. The [source comparison](references/RELATED_WORK.md) explains both distinctions and credits the inherited information-theoretic and metric tools.
 
+## Learn the argument
+
+The educational anchor is Mark M. Wilde's *Quantum Information Theory*, second edition (2017). The [source bridge](learning/WILDE_BRIDGE.md) connects its entropy and capacity theorems to the output geometry used here, with notation translations and a worked example. It identifies the additional metric arguments supplied by this project and the primary literature.
+
+The [30-milestone map](learning/MILESTONES.md) develops the prerequisites and then assembles the proof, examples, and physical conclusion. Start with the [learning guide](learning/README.md); specialists can proceed directly to the [scientific account](science/README.md). The [LLM reading guide](llms.txt) maps specific questions to their authoritative sources.
+
 ## Reproduce the checks
 
 With the dependencies in [verification/requirements.txt](verification/requirements.txt), run from the repository root:

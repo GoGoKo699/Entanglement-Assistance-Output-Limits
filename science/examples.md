@@ -63,7 +63,7 @@ Let $`\mathbf n_0,\mathbf n_1,\mathbf n_2`$ be coplanar unit vectors separated b
 ```math
 E_y=\frac{I+\mathbf n_y\cdot\boldsymbol\sigma}{3},
 \qquad
-M(\rho)=\sum_{y=0}^2\operatorname{Tr}(E_y\rho)|y\rangle\langle y|.
+M(\rho)=\sum_{y=0}^2\mathrm{Tr}(E_y\rho)|y\rangle\langle y|.
 ```
 
 For an input with Bloch vector $`\mathbf v`$, the probabilities obey
@@ -218,13 +218,13 @@ with normalized Haar measure on pure states. The Haar second-moment identity eva
 For any channel $`T:A\to B`$, add an arbitrary finite input register $`K`$ and define
 
 ```math
-\widetilde T_{AK\to B}=T\circ\operatorname{Tr}_K.
+\widetilde T_{AK\to B}=T\circ\mathrm{Tr}_K.
 ```
 
 Let $`J(\rho)=\rho\otimes|0\rangle\langle0|_K`$. Then
 
 ```math
-\widetilde T=T\circ\operatorname{Tr}_K,
+\widetilde T=T\circ\mathrm{Tr}_K,
 \qquad
 T=\widetilde T\circ J.
 ```

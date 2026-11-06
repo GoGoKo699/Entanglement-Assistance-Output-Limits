@@ -22,12 +22,12 @@ It defines a sesquilinear inner product on all complex matrices of the same size
 
 ```math
 \langle X,Y\rangle_\tau
-=\operatorname{Tr}\!\left[X^\dagger D\log_\tau(Y)\right],
+=\mathrm{Tr}\!\left[X^\dagger D\log_\tau(Y)\right],
 \qquad
 K_\tau(X)=\langle X,X\rangle_\tau.
 ```
 
-The inner product is conjugate-linear in its first argument. The map $`D\log_\tau`$ is self-adjoint for the Hilbert–Schmidt inner product and preserves Hermitian operators. On the real vector space of Hermitian matrices, $`K_\tau`$ is the Hessian of $`\operatorname{Tr}(\tau\ln\tau)`$.
+The inner product is conjugate-linear in its first argument. The map $`D\log_\tau`$ is self-adjoint for the Hilbert–Schmidt inner product and preserves Hermitian operators. On the real vector space of Hermitian matrices, $`K_\tau`$ is the Hessian of $`\mathrm{Tr}(\tau\ln\tau)`$.
 
 In an eigenbasis of $`\tau`$, with eigenvalues $`\lambda_i>0`$,
 
@@ -84,7 +84,7 @@ For density matrices $`\rho`$ and $`\tau`$, with $`\tau>0`$, write
 
 ```math
 D(\rho\|\tau)
-=\operatorname{Tr}\bigl[\rho(\ln\rho-\ln\tau)\bigr],
+=\mathrm{Tr}\bigl[\rho(\ln\rho-\ln\tau)\bigr],
 ```
 
 using the usual convention $`0\ln0=0`$. A reference state that is positive only on a common support can be treated by restricting every operator to that support.
@@ -97,7 +97,7 @@ D(\rho\|\tau)
 \le K_\tau(Z).
 ```
 
-**Proof.** For positive definite $`\rho`$, the first equality is the integral Taylor formula for $`F(t)=\operatorname{Tr}(\rho_t\ln\rho_t)`$. Its second derivative is $`F''(t)=K_{\rho_t}(Z)`$; the first-order correction gives the relative entropy because $`\operatorname{Tr}Z=0`$.
+**Proof.** For positive definite $`\rho`$, the first equality is the integral Taylor formula for $`F(t)=\mathrm{Tr}(\rho_t\ln\rho_t)`$. Its second derivative is $`F''(t)=K_{\rho_t}(Z)`$; the first-order correction gives the relative entropy because $`\mathrm{Tr}Z=0`$.
 
 For $`0\le t<1`$, positivity of $`\rho`$ gives $`\rho_t\ge(1-t)\tau`$. Lemma 1 and scaling imply
 
@@ -117,7 +117,7 @@ J(x,y)
 =S\!\left(\frac{x+y}{2}\right)
 -\frac{S(x)+S(y)}2,
 \qquad
-S(x)=-\operatorname{Tr}(x\ln x).
+S(x)=-\mathrm{Tr}(x\ln x).
 ```
 
 **Lemma 3.** Suppose $`\tau`$ is a positive definite density matrix and $`x,y\le c\tau`$ for $`c\ge1`$. Then
@@ -129,7 +129,7 @@ J(x,y)\ge\frac{1}{8c}K_\tau(x-y).
 **Proof.** Every point $`z_t=(1-t)y+tx`$ of the segment is at most $`c\tau`$. When the endpoints are positive definite, Lemma 1 gives
 
 ```math
-\frac{d^2}{dt^2}\operatorname{Tr}(z_t\ln z_t)
+\frac{d^2}{dt^2}\mathrm{Tr}(z_t\ln z_t)
 =K_{z_t}(x-y)
 \ge\frac1c K_\tau(x-y).
 ```

@@ -1,0 +1,44 @@
+# Entanglement Assistance Output Limits
+
+> A uniform output-dimension bound on the classical communication advantage of unlimited preshared entanglement for finite-dimensional memoryless quantum channels.
+
+## Scientific question and result
+
+For a channel T:A→B, let b=rank T(I_A) be its effective output-support dimension and r the real affine dimension of its output-state image. The central estimate is C_E(T)≤16br χ(T)≤16b(b²−1)C(T). It is uniform over all finite input dimensions and arbitrarily small output eigenvalues. The complete theorem and proof, including zero-capacity cases, live in the scientific pages below.
+
+## Authoritative scientific routes
+
+- [Repository overview](README.md): question, result, scope, reading routes, and reproduction command.
+- [Scientific account](science/README.md): connected reading order for the full argument.
+- [Model and exact claims](science/model.md): capacities, effective support, affine image dimension, allowed resources, logarithm conventions, and quantified theorem.
+- [BKM geometry](science/bkm_geometry.md): the quadratic form on positive definite operators, order/scaling properties, and relative-entropy comparisons.
+- [Output-dimension proof](science/output_bound.md): the in-image log-determinant center, binary Holevo bound, output-basis amplification estimate, and capacity consequence.
+- [Worked channel comparisons](science/examples.md): identity, genuine classical stochastic channels, trine measurement, depolarizing limits, and discarded input padding.
+- [Interpretation](science/interpretation.md): physical meaning, optimal-scaling gap, and limits of the result.
+
+## Study route
+
+- [Learning guide](learning/README.md): how the selected source and project account fit together.
+- [Wilde source bridge](learning/WILDE_BRIDGE.md): Mark M. Wilde, Quantum Information Theory, second edition (2017), relevant verified sections, notation, and the additional arguments needed here.
+- [Milestones M01–M30](learning/MILESTONES.md): the project-defined background/preliminaries and narrative/innovation targets, their dependencies, and source pointers.
+
+The single educational anchor is Wilde's second edition. Primary research references supply attribution and proof dependencies; they are not additional textbook prerequisites. The learning map is independent of any reader's assessment or progress.
+
+## Attribution and verification
+
+- [Related work](references/RELATED_WORK.md): the input-dimension predecessor, earlier output bound with spectral dependence, inherited metric tools, and the bounded novelty comparison.
+- [Bibliography](references/references.bib): primary publication and manuscript identifiers.
+- [Verification guide](verification/README.md): finite matrix checks, high-precision depolarizing calculations, pinned dependencies, and their limits.
+- [Verification runner](verification/run_all.py): run `python3 verification/run_all.py` from the repository root.
+
+## Distinctions to preserve
+
+- C(T) is the regularized ordinary classical capacity. Do not replace it by the single-use Holevo quantity χ(T) for an arbitrary channel; the proof uses χ(T)≤C(T).
+- C_E(T) allows unlimited preshared entanglement. The dimension b counts the channel output alone, not the receiver's stored entanglement or the reference system.
+- The result ranges uniformly over every finite input dimension. It does not assert an infinite-dimensional input extension.
+- Use the capacity inequality when C(T)=0. A ratio is only defined when the denominator is positive.
+- The BKM metric is evaluated on the effective support and, for Schmidt decompositions, on the support of the input marginal. The compressed square (PHP)² and the compression PH²P need not coincide.
+- A genuine fixed-input-basis classical stochastic channel has no entanglement-assisted gain. Classical output alone does not imply this; the trine measurement example has a gain.
+- Fixed output dimension with weak depolarizing signal and growing output dimension at the negative complete-positivity boundary are different limits. The latter has ratio 2b+4/3−4/(9b)+O(b⁻²).
+- The universal factor is a proved bound, with no claim that its constant or cubic dimension dependence is optimal. Known examples require at least linear dimension growth.
+- Finite computations check calculations and conventions. The analytical proof establishes the general result.
