@@ -247,7 +247,8 @@ This padding example does not itself produce a larger enhancement. It explains w
 From the repository root, reproduce the saved values with:
 
 ```bash
-python verification/check_depolarizing_limits.py --compare verification/expected/depolarizing_limit_checks.json
+python3 verification/check_depolarizing_limits.py \
+  --compare verification/expected/depolarizing_limit_checks.json
 ```
 
 Use `--output PATH` to write a fresh report instead of comparing the saved one.
