@@ -49,7 +49,7 @@ For integers $`b\ge2`$, define the maximal gain over all finite input dimensions
 ```math
 G_b=
 \sup_{\substack{T:\ C(T)>0\\
-\operatorname{rank}T(I_A)\le b}}
+\mathrm{rank}T(I_A)\le b}}
 \frac{C_E(T)}{C(T)}.
 ```
 

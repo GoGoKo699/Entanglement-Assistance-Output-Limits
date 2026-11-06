@@ -15,10 +15,10 @@ We use natural logarithms and rates in nats in the proofs. Dividing every inform
 For states, write
 
 ```math
-S(\rho)=-\operatorname{Tr}\rho\ln\rho,
+S(\rho)=-\mathrm{Tr}\rho\ln\rho,
 \qquad
 D(\rho\Vert\sigma)=
-\operatorname{Tr}\rho(\ln\rho-\ln\sigma),
+\mathrm{Tr}\rho(\ln\rho-\ln\sigma),
 ```
 
 with $`D=+\infty`$ when the support of $`\rho`$ is not contained in that of $`\sigma`$. Quantum mutual information is
@@ -67,9 +67,9 @@ Let $`\mathcal S(A)`$ denote the input state space, and define
 ```math
 \mathcal S_T=T(\mathcal S(A)),
 \qquad
-Q=\operatorname{supp}T(I_A),
+Q=\mathrm{supp}T(I_A),
 \qquad
-b=\operatorname{rank}T(I_A).
+b=\mathrm{rank}T(I_A).
 ```
 
 For every state $`\rho`$, positivity and $`\rho\le I_A`$ give $`T(\rho)\le T(I_A)`$. Every output therefore lies on $`Q`$. Conversely, $`T(I_A/\dim A)`$ is positive definite on $`Q`$. We restrict $`B`$ to this common support from now on.
@@ -79,7 +79,7 @@ The number $`b`$ counts the system delivered by one channel use. It does not cou
 For any fixed $`\sigma\in\mathcal S_T`$, let
 
 ```math
-V=\operatorname{span}_{\mathbb R}
+V=\mathrm{span}_{\mathbb R}
 \{x-\sigma:x\in\mathcal S_T\},
 \qquad
 r=\dim_{\mathbb R}V.

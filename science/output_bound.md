@@ -4,7 +4,7 @@
 
 An arbitrarily large input space cannot provide an unbounded relative communication gain from preshared entanglement when the channel-output dimension remains fixed. We prove this by controlling the geometry of the channel's entire output-state image.
 
-The [model page](model.md) defines the memoryless channel $`T`$, its ordinary classical capacity $`C(T)`$, its entanglement-assisted classical capacity $`C_E(T)`$, and its single-use Holevo quantity $`\chi(T)`$. Here $`b=\operatorname{rank}T(I_A)`$ is the effective output dimension, and $`r`$ is the real affine dimension of the output-state image. The receiver's share of the preshared entanglement is unrestricted; $`b`$ counts only the system delivered by one channel use.
+The [model page](model.md) defines the memoryless channel $`T`$, its ordinary classical capacity $`C(T)`$, its entanglement-assisted classical capacity $`C_E(T)`$, and its single-use Holevo quantity $`\chi(T)`$. Here $`b=\mathrm{rank}T(I_A)`$ is the effective output dimension, and $`r`$ is the real affine dimension of the output-state image. The receiver's share of the preshared entanglement is unrestricted; $`b`$ counts only the system delivered by one channel use.
 
 ## The theorem
 
@@ -30,7 +30,7 @@ Write
 ```math
 S=T(\mathcal S(A)),
 \qquad
-Q=\operatorname{supp}T(I_A).
+Q=\mathrm{supp}T(I_A).
 ```
 
 Every output is supported on $`Q`$: for a density matrix $`\rho`$, positivity gives $`T(\rho)\le T(I_A)`$. We restrict the receiving space to $`Q`$, whose dimension is $`b`$. The state $`T(I_A/\dim A)`$ is positive definite on this space.
@@ -46,9 +46,9 @@ x\le b\sigma\qquad\text{for every }x\in S.
 For each $`x\in S`$, the segment $`(1-t)\sigma+tx`$ remains in $`S`$. The one-sided derivative at a maximum is nonpositive:
 
 ```math
-\operatorname{Tr}\bigl[\sigma^{-1}(x-\sigma)\bigr]\le0,
+\mathrm{Tr}\bigl[\sigma^{-1}(x-\sigma)\bigr]\le0,
 \qquad
-\operatorname{Tr}(\sigma^{-1}x)\le b.
+\mathrm{Tr}(\sigma^{-1}x)\le b.
 ```
 
 The positive matrix $`\sigma^{-1/2}x\sigma^{-1/2}`$ has largest eigenvalue at most its trace. It is therefore at most $`bI`$, which proves the claim. $`\square`$
@@ -84,18 +84,18 @@ This estimate retains the full state-dependent metric. It remains valid when the
 Define the replacement channel and its difference from $`T`$ by
 
 ```math
-R_\sigma(X)=\operatorname{Tr}(X)\sigma,
+R_\sigma(X)=\mathrm{Tr}(X)\sigma,
 \qquad
 \Delta=T-R_\sigma.
 ```
 
-Let $`V=\operatorname{span}_{\mathbb R}(S-\sigma)`$. Because $`\sigma\in S`$, this space has dimension $`r`$ and consists of traceless Hermitian matrices. Every Hermitian input is a real linear combination of density matrices, so $`\Delta`$ maps Hermitian inputs into $`V`$ and arbitrary complex inputs into $`V+iV`$.
+Let $`V=\mathrm{span}_{\mathbb R}(S-\sigma)`$. Because $`\sigma\in S`$, this space has dimension $`r`$ and consists of traceless Hermitian matrices. Every Hermitian input is a real linear combination of density matrices, so $`\Delta`$ maps Hermitian inputs into $`V`$ and arbitrary complex inputs into $`V+iV`$.
 
 Choose a real $`K_\sigma`$-orthonormal Hermitian basis $`F_1,\ldots,F_r`$ of $`V`$. Its complexification is an orthonormal basis of $`V+iV`$ for the sesquilinear BKM inner product. Write $`\Delta^*`$ for the Hilbert–Schmidt adjoint, defined by
 
 ```math
-\operatorname{Tr}\bigl[Y^\dagger\Delta(X)\bigr]
-=\operatorname{Tr}\bigl[(\Delta^*(Y))^\dagger X\bigr].
+\mathrm{Tr}\bigl[Y^\dagger\Delta(X)\bigr]
+=\mathrm{Tr}\bigl[(\Delta^*(Y))^\dagger X\bigr].
 ```
 
 Set
@@ -108,7 +108,7 @@ Each $`H_j`$ is Hermitian because both maps in its definition preserve Hermitian
 
 ```math
 \langle F_j,\Delta(X)\rangle_\sigma
-=\operatorname{Tr}(H_jX).
+=\mathrm{Tr}(H_jX).
 ```
 
 The orthonormal expansion and Parseval identity are therefore
@@ -116,9 +116,9 @@ The orthonormal expansion and Parseval identity are therefore
 ```math
 \begin{aligned}
 \Delta(X)
-&=\sum_{j=1}^r\operatorname{Tr}(H_jX)F_j,\\
+&=\sum_{j=1}^r\mathrm{Tr}(H_jX)F_j,\\
 K_\sigma(\Delta(X))
-&=\sum_{j=1}^r|\operatorname{Tr}(H_jX)|^2.
+&=\sum_{j=1}^r|\mathrm{Tr}(H_jX)|^2.
 \end{aligned}
 ```
 
@@ -147,7 +147,7 @@ where the reference system is restricted to the support of $`\rho_R`$.
 \qquad\sum_kp_k=1.
 ```
 
-Let $`P`$ project onto the input Schmidt subspace. On the reference support, $`\rho_R=\operatorname{diag}(p_k)`$ is positive definite. Diagonalize $`\sigma`$ with eigenvalues $`\mu_s>0`$. The spectral BKM formula and the [Schmidt-weight inequality](bkm_geometry.md#the-schmidt-weight-inequality) give
+Let $`P`$ project onto the input Schmidt subspace. On the reference support, $`\rho_R=\mathrm{diag}(p_k)`$ is positive definite. Diagonalize $`\sigma`$ with eigenvalues $`\mu_s>0`$. The spectral BKM formula and the [Schmidt-weight inequality](bkm_geometry.md#the-schmidt-weight-inequality) give
 
 ```math
 \begin{aligned}
@@ -169,8 +169,8 @@ The sums over $`k,l`$ run only over the Schmidt subspace. Since $`H_j`$ is Hermi
 \begin{aligned}
 \sum_{k,l}\max(p_k,p_l)|(H_j)_{lk}|^2
 &\le\sum_{k,l}(p_k+p_l)|(H_j)_{lk}|^2\\
-&=2\operatorname{Tr}\!\left[\rho_A(PH_jP)^2\right]\\
-&\le2\operatorname{Tr}(\rho_AH_j^2)\\
+&=2\mathrm{Tr}\!\left[\rho_A(PH_jP)^2\right]\\
+&\le2\mathrm{Tr}(\rho_AH_j^2)\\
 &\le2\|H_j\|_\infty^2.
 \end{aligned}
 ```

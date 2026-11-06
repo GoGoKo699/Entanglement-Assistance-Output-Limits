@@ -45,8 +45,10 @@ The negative-boundary ordinary capacity involves cancellation between logarithms
 ## Regenerate a report deliberately
 
 ```bash
-python3 verification/audit_amplification.py --output verification/expected/amplification_audit_results.json
-python3 verification/check_depolarizing_limits.py --output verification/expected/depolarizing_limit_checks.json
+python3 verification/audit_amplification.py \
+  --output verification/expected/amplification_audit_results.json
+python3 verification/check_depolarizing_limits.py \
+  --output verification/expected/depolarizing_limit_checks.json
 ```
 
 Regeneration is appropriate after a reviewed change to the calculation, not a substitute for resolving a failed comparison.
