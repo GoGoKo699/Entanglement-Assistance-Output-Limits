@@ -201,7 +201,7 @@ R_b=2b+\frac43-\frac{4}{9b}+O(b^{-2}).
 
 In particular, $`R_b/[2(b+1)]\to1`$. The expression $`2(b+1)`$ correctly describes the leading multiplicative growth, but it is not an additive asymptote: $`R_b-2(b+1)\to-2/3`$. The fixed-$`b`$, $`q\to0`$ result $`b+1`$ and the present $`b\to\infty`$, $`q=q_b`$ result concern different orders of limits. The Taylor remainder in the former is not uniform in growing dimension.
 
-This family requires any universal output-dimension enhancement factor to grow at least linearly with $`b`$. It does not establish that the optimal factor is linear. The bound $`16b(b^2-1)`$ remains cubic in the largest possible image dimension, leaving its dimension dependence unoptimized. For square channels, existing input-dimension bounds can be stronger; the distinct feature here is uniformity when the input dimension is unrestricted.
+This family requires any universal output-dimension enhancement factor to grow at least linearly with $`b`$. It does not establish that the optimal factor is linear. The bound $`16b(b^2-1)`$ remains cubic in the output dimension, leaving its dimension dependence unoptimized. For square channels, existing input-dimension bounds can be stronger; the distinct feature here is uniformity when the input dimension is unrestricted.
 
 The boundary channel is itself entanglement-breaking. One explicit measure-and-prepare representation is
 

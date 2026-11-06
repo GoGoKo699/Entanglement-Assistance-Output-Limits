@@ -79,8 +79,8 @@ H = np.array([[0.0, 1.0], [1.0, 0.0]])
 restricted = float(2 * np.trace(P @ (P @ H @ P) @ (P @ H @ P)))
 uncompressed = float(2 * np.trace(P @ H @ H))
 gap_min = float(np.min(np.linalg.eigvalsh(P @ H @ H @ P - (P @ H @ P) @ (P @ H @ P))))
-report['support_compression'] = {'restricted_second_moment': restricted,
-    'full_second_moment': uncompressed, 'gap_min_eigenvalue': gap_min}
+report['support_compression'] = {'twice_compressed_second_moment': restricted,
+    'twice_full_second_moment': uncompressed, 'gap_min_eigenvalue': gap_min}
 report['all_pass'] = bool(report['all_pass'] and restricted == 0.0
     and uncompressed == 2.0 and gap_min >= 0.0)
 report['numpy_version'] = np.__version__

@@ -1566,8 +1566,8 @@
     }
   ],
   "support_compression": {
-    "restricted_second_moment": 0.0,
-    "full_second_moment": 2.0,
+    "twice_compressed_second_moment": 0.0,
+    "twice_full_second_moment": 2.0,
     "gap_min_eigenvalue": 0.0
   },
   "numpy_version": "2.3.5"

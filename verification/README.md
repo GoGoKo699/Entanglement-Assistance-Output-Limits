@@ -28,7 +28,7 @@ For each case the script evaluates the joint quadratic form directly and checks 
 
 The committed run passes all 120 cases. Its largest ratio of the direct joint form to the final finite radius certificate is approximately 0.256259308. This number is a property of the sampled cases, not an estimated sharp universal constant.
 
-A separate two-dimensional regression uses a rank-one Schmidt support and a Pauli X coefficient operator. The compressed second moment is zero while the full second moment is two. It checks the distinction required in the [support-compression step](../science/output_bound.md): equality with the uncompressed operator would be incorrect.
+A separate two-dimensional regression uses a rank-one Schmidt support and a Pauli X coefficient operator. Twice the compressed second moment is zero while twice the full second moment is two. It checks the distinction required in the [support-compression step](../science/output_bound.md): equality with the uncompressed operator would be incorrect.
 
 The inequality checks use a relative tolerance of 1e-7 and an absolute tolerance of 1e-8. Comparisons with the committed floating-point report use relative tolerance 1e-6 and absolute tolerance 1e-8. Dimension labels, seed, booleans and dependency version must agree exactly.
 
