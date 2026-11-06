@@ -25,7 +25,7 @@ Use these sections for the specific connections below. The [milestone map](MILES
 | Information in a prepared ensemble | §13.3, p. 383 | [A feasible binary ensemble bounds the image radius](../science/output_bound.md#binary-communication-controls-the-output-radius) |
 | Optimized reference–output correlation | §13.4, p. 389 | [The assisted-capacity formula](../science/model.md#two-standard-capacity-facts) |
 | Reliable ordinary communication | §20.3, p. 548 | The inequality $`\chi(T)\le C(T)`$ |
-| Reliable communication with preshared entanglement | §21.3, p. 577 | [The final passage from a state inequality to $`C_E(T)`$](../science/output_bound.md#from-the-quadratic-bound-to-capacities) |
+| Reliable communication with preshared entanglement | §21.3, p. 577 | [The final passage from a state inequality to assisted capacity](../science/output_bound.md#from-the-quadratic-bound-to-capacities) |
 
 ## Translating notation and assumptions
 
