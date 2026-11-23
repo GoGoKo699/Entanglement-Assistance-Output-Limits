@@ -2,7 +2,7 @@
 
 [Model and notation](model.md) · [Output-dimension theorem](output_bound.md)
 
-The proof uses a quadratic form that adapts to the spectrum of a reference state. It controls relative entropy without replacing the reference state by a scalar lower bound. That distinction allows the final capacity estimate to remain uniform when output eigenvalues approach zero.
+The proof uses a quadratic form that adapts to the spectrum of a reference operator. The operator can be an unnormalized state with a small positive floor. The same form controls the relative entropy of the joint output and the Holevo information of binary ensembles.
 
 The identities below are standard Bogoliubov–Kubo–Mori (BKM) tools. We follow the presentation in [Wolff et al.](../references/RELATED_WORK.md#wolff2025), especially equations (6)–(9), (13), and (21)–(22); related relative-entropy comparisons appear in [Gao and Rouzé](../references/RELATED_WORK.md#gaorouze2022). The [next page](output_bound.md) applies these tools to the geometry of a channel's output image.
 
@@ -80,24 +80,25 @@ Integrating the quadratic-form inequality proves the claim. The transpose is tak
 
 ## Relative entropy and its quadratic upper bound
 
-For density matrices $`\rho`$ and $`\tau`$, with $`\tau>0`$, write
+For positive semidefinite $`\rho`$ and positive definite $`\tau`$, define the extended relative entropy by
 
 ```math
-D(\rho\|\tau)
-=\mathrm{Tr}\bigl[\rho(\ln\rho-\ln\tau)\bigr],
+D_{\mathrm{ext}}(\rho\|\tau)
+=\mathrm{Tr}\bigl[\rho(\ln\rho-\ln\tau)\bigr]
+-\mathrm{Tr}\rho+\mathrm{Tr}\tau.
 ```
 
-using the usual convention $`0\ln0=0`$. A reference state that is positive only on a common support can be treated by restricting every operator to that support.
+The convention is $`0\ln0=0`$. For density matrices this is the usual relative entropy $`D(\rho\|\tau)`$. The trace correction makes the expression the first-order remainder of the convex function $`Z\mapsto\mathrm{Tr}(Z\ln Z)`$, so it is nonnegative. A reference that is positive only on a common support can be treated by restricting every operator to that support.
 
 **Lemma 2.** Let $`Z=\rho-\tau`$ and $`\rho_t=\tau+tZ`$. Then
 
 ```math
-D(\rho\|\tau)
+D_{\mathrm{ext}}(\rho\|\tau)
 =\int_0^1(1-t)K_{\rho_t}(Z)\,dt
 \le K_\tau(Z).
 ```
 
-**Proof.** For positive definite $`\rho`$, the first equality is the integral Taylor formula for $`F(t)=\mathrm{Tr}(\rho_t\ln\rho_t)`$. Its second derivative is $`F''(t)=K_{\rho_t}(Z)`$; the first-order correction gives the relative entropy because $`\mathrm{Tr}Z=0`$.
+**Proof.** For positive definite $`\rho`$, the first equality is the integral Taylor formula for $`F(t)=\mathrm{Tr}(\rho_t\ln\rho_t)`$. Its second derivative is $`F''(t)=K_{\rho_t}(Z)`$. The linear term $`F'(0)=\mathrm{Tr}\bigl[Z(\ln\tau+I)\bigr]`$ gives the trace correction.
 
 For $`0\le t<1`$, positivity of $`\rho`$ gives $`\rho_t\ge(1-t)\tau`$. Lemma 1 and scaling imply
 
@@ -106,7 +107,7 @@ K_{\rho_t}(Z)
 \le\frac{1}{1-t}K_\tau(Z).
 ```
 
-Substitution into the integral proves the upper bound. For singular $`\rho`$, replace it by $`(1-\delta)\rho+\delta\tau`$ and take $`\delta\downarrow0`$. Both relative entropy against the fixed positive $`\tau`$ and the quadratic form are continuous in this limit. The weighted integrand is bounded by the fixed $`K_\tau(Z)`$, so the integral identity passes to the limit as well. $`\square`$
+Substitution into the integral proves the upper bound. For singular $`\rho`$, replace it by $`(1-\delta)\rho+\delta\tau`$ and take $`\delta\downarrow0`$. The divergence against the fixed positive $`\tau`$ is continuous in this limit. The regularized difference is $`(1-\delta)Z`$, so the weighted integrand is bounded by the fixed $`K_\tau(Z)`$ and the integral identity passes to the limit. $`\square`$
 
 ## A segment bound for binary Holevo information
 
@@ -120,7 +121,7 @@ J(x,y)
 S(x)=-\mathrm{Tr}(x\ln x).
 ```
 
-**Lemma 3.** Suppose $`\tau`$ is a positive definite density matrix and $`x,y\le c\tau`$ for $`c\ge1`$. Then
+**Lemma 3.** Suppose $`\tau>0`$ and $`x,y\le c\tau`$ for a constant $`c>0`$. Then
 
 ```math
 J(x,y)\ge\frac{1}{8c}K_\tau(x-y).
@@ -136,7 +137,7 @@ J(x,y)\ge\frac{1}{8c}K_\tau(x-y).
 
 Subtracting the quadratic function with this constant second derivative leaves a convex function. Its midpoint inequality yields the factor $`1/8`$. The entropy midpoint gap is exactly $`J(x,y)`$.
 
-For singular endpoints, mix each with $`\delta\tau`$. These regularized endpoints still satisfy the same domination condition. Entropy and the fixed-center quadratic form are continuous as $`\delta\downarrow0`$. $`\square`$
+For singular endpoints, mix each with the same positive definite state $`\tau/\mathrm{Tr}\tau`$. Since $`1=\mathrm{Tr}x\le c\,\mathrm{Tr}\tau`$, this state is also at most $`c\tau`$. Continuity of the entropy and of the fixed-reference quadratic form gives the result as the mixing weight tends to zero. $`\square`$
 
 ## The Schmidt-weight inequality
 

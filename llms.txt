@@ -1,10 +1,10 @@
 # Entanglement Assistance Output Limits
 
-> A uniform output-dimension bound on the classical communication advantage of unlimited preshared entanglement for finite-dimensional memoryless quantum channels.
+> An order-sharp quadratic output-dimension law for the classical communication advantage of unlimited preshared entanglement for finite-dimensional memoryless quantum channels.
 
 ## Scientific question and result
 
-For a channel T:A→B, let b=rank T(I_A) be its effective output-support dimension and r the real affine dimension of its output-state image. The central estimate is C_E(T)≤16br χ(T)≤16b(b²−1)C(T). It is uniform over all finite input dimensions and arbitrarily small output eigenvalues. The complete theorem and proof, including zero-capacity cases, live in the scientific pages below.
+For a channel T:A→B, let b=rank T(I_A) be its effective output-support dimension and r the real affine dimension of its output-state image. The central estimate is C_E(T)≤(2√((e−1)r)+√b)² χ(T). It is uniform over all finite input dimensions and arbitrarily small output eigenvalues. An explicit entanglement-breaking family at fixed b gives a ratio tending to b²−1. Therefore the worst order is quadratic, and the corresponding order for commuting outputs is linear. The complete theorem and proof, including zero-capacity cases, live in the scientific pages below.
 
 ## Authoritative scientific routes
 
@@ -12,9 +12,10 @@ For a channel T:A→B, let b=rank T(I_A) be its effective output-support dimensi
 - [Scientific account](science/README.md): connected reading order for the full argument.
 - [Model and exact claims](science/model.md): capacities, effective support, affine image dimension, allowed resources, logarithm conventions, and quantified theorem.
 - [BKM geometry](science/bkm_geometry.md): the quadratic form on positive definite operators, order/scaling properties, and relative-entropy comparisons.
-- [Output-dimension proof](science/output_bound.md): the in-image log-determinant center, binary Holevo bound, output-basis amplification estimate, and capacity consequence.
+- [Output-dimension proof](science/output_bound.md): the regularized Holevo information-radius center, binary Holevo bound, output-basis amplification estimate, and capacity consequence.
+- [Matching examples](science/sharp_examples.md): Clifford measure-and-prepare family, exact weak-signal ratio and commuting-output case.
 - [Worked channel comparisons](science/examples.md): identity, genuine classical stochastic channels, trine measurement, depolarizing limits, and discarded input padding.
-- [Interpretation](science/interpretation.md): physical meaning, optimal-scaling gap, and limits of the result.
+- [Interpretation](science/interpretation.md): physical meaning, exact-factor question, and limits of the result.
 
 ## Study route
 
@@ -28,7 +29,7 @@ The single educational anchor is Wilde's second edition. Primary research refere
 
 - [Related work](references/RELATED_WORK.md): the input-dimension predecessor, earlier output bound with spectral dependence, inherited metric tools, and the bounded novelty comparison.
 - [Bibliography](references/references.bib): primary publication and manuscript identifiers.
-- [Verification guide](verification/README.md): finite matrix checks, high-precision depolarizing calculations, pinned dependencies, and their limits.
+- [Verification guide](verification/README.md): finite matrix checks, high-precision depolarizing calculations, weak-signal spectra, pinned dependencies, and their limits.
 - [Verification runner](verification/run_all.py): run `python3 verification/run_all.py` from the repository root.
 
 ## Distinctions to preserve
@@ -40,5 +41,5 @@ The single educational anchor is Wilde's second edition. Primary research refere
 - The BKM metric is evaluated on the effective support and, for Schmidt decompositions, on the support of the input marginal. The compressed square (PHP)² and the compression PH²P need not coincide.
 - A genuine fixed-input-basis classical stochastic channel has no entanglement-assisted gain. Classical output alone does not imply this; the trine measurement example has a gain.
 - Fixed output dimension with weak depolarizing signal and growing output dimension at the negative complete-positivity boundary are different limits. The latter has ratio 2b+4/3−4/(9b)+O(b⁻²).
-- The universal factor is a proved bound, with no claim that its constant or cubic dimension dependence is optimal. Known examples require at least linear dimension growth.
+- Quadratic order is optimal over all output images, even for entanglement-breaking channels. Linear order is optimal for commuting output images. The exact universal constants remain open. The explicit weak-signal example has large input dimension and vanishing absolute rates.
 - Finite computations check calculations and conventions. The analytical proof establishes the general result.

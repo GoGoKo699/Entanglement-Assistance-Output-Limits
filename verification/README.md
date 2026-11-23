@@ -11,12 +11,13 @@ python3 -m pip install -r verification/requirements.txt
 python3 verification/run_all.py
 ```
 
-The runner recomputes both reports and compares them with the committed files in [expected/](expected/). It exits unsuccessfully if an inequality, endpoint assertion, or reference comparison fails. It does not overwrite the expected results.
+The runner compares the amplification and depolarizing reports with the files in [expected/](expected/), then checks the weak-signal family. It exits unsuccessfully if an inequality or reference comparison fails.
 
 | Check | Purpose | Scope |
 |---|---|---|
 | [Amplification audit](audit_amplification.py) | Reconstruct the BKM quadratic form and its successive coefficient, Hermitian-moment and image-coordinate bounds | 120 deterministic random finite maps, plus an exact support-compression regression |
 | [Depolarizing limits](check_depolarizing_limits.py) | Verify capacity formulas against spectra, zero/identity endpoints, and two distinct limiting regimes | 100 decimal digits; 12 weak-signal rows, 6 negative-boundary rows and 3 endpoint dimensions |
+| [Weak-signal output examples](check_sharp_output.py) | Check the Clifford relations, measure-and-prepare realization, spectral capacity bounds, and limiting coefficients | Full qubit and qutrit outputs and commuting qutrit outputs |
 
 ## Complete-amplification audit
 
@@ -41,6 +42,10 @@ The capacities are evaluated from the formulas derived in [Worked channel compar
 - the exact replacement and identity endpoints.
 
 The negative-boundary ordinary capacity involves cancellation between logarithms. High precision keeps that cancellation under control and resolves the constant term in the capacity-ratio expansion. The reported calculations do not optimize either capacity numerically; the exact capacity identifications use the cited coding and additivity theorems.
+
+## Weak-signal output examples
+
+The script constructs the Clifford observables and the output bases in [the sharpness proof](../science/sharp_examples.md). It checks the measure-and-prepare Choi matrix and the entropy bounds at nonzero signal strength. It also checks the joint quadratic form for nonuniform and rank-deficient Schmidt distributions. The displayed coefficients converge to the values in the proof. The proof identifies the capacity ratio by optimizing over all inputs.
 
 ## Regenerate a report deliberately
 

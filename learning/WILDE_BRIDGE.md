@@ -4,7 +4,7 @@
 
 Alice sends classical messages through a noisy quantum channel. Bob tries to recover them from the received systems. Sharing entanglement before transmission changes the correlations available to the encoder and decoder, and can increase the reliable rate even when the transmitted system is a single qubit.
 
-This project asks how large that multiplicative increase can be when the output system of each channel use has fixed dimension. The answer compares two rates of the same channel: its ordinary classical capacity $`C(T)`$ and its entanglement-assisted capacity $`C_E(T)`$. A bound on either rate separately does not control their ratio when both rates approach zero.
+This project determines how the largest possible multiplicative gain grows with the dimension of the system delivered per channel use. The answer compares two rates of the same channel: its ordinary classical capacity $`C(T)`$ and its entanglement-assisted capacity $`C_E(T)`$. A bound on either rate separately does not control their ratio when both rates approach zero.
 
 ## The selected source
 
@@ -22,7 +22,7 @@ Use these sections for the specific connections below. The [milestone map](MILES
 |---|---|---|
 | Correlation between a reference and an output | §11.6, p. 315 | [Mutual information in the communication model](../science/model.md#communication-task) |
 | Relative entropy as distinguishability from a reference state | §11.8, p. 321 | [The quadratic relative-entropy estimate](../science/bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound) |
-| Information in a prepared ensemble | §13.3, p. 383 | [A feasible binary ensemble bounds the image radius](../science/output_bound.md#binary-communication-controls-the-output-radius) |
+| Information in a prepared ensemble | §13.3, p. 383 | [The Holevo information radius controls output deviations](../science/output_bound.md) |
 | Optimized reference–output correlation | §13.4, p. 389 | [The assisted-capacity formula](../science/model.md#two-standard-capacity-facts) |
 | Reliable ordinary communication | §20.3, p. 548 | The inequality $`\chi(T)\le C(T)`$ |
 | Reliable communication with preshared entanglement | §21.3, p. 577 | [The final passage from a state inequality to assisted capacity](../science/output_bound.md#from-the-quadratic-bound-to-capacities) |
@@ -133,7 +133,7 @@ C_E(D_{2,q})=\frac{3q^2}{2\ln2}+O(q^3).
 
 Their ratio tends to three while both capacities vanish. At $`q=0`$ itself, both capacities are zero and the ratio is undefined. The [limiting calculation](../science/examples.md#fixed-output-dimension-and-vanishing-capacity) keeps these statements separate.
 
-An absolute bound such as $`C_E\le2`$ cannot explain this finite multiplier: dividing it by a vanishing $`C`$ gives no uniform control. The project proves a uniform comparison across all channels of fixed output dimension. For this family, $`r=3`$ whenever $`q>0`$, so its bound is $`C_E\le96\chi`$. The exact formulas above are much sharper for this symmetric example; the theorem's role is to cover arbitrary channels and arbitrary finite input dimensions.
+An absolute bound such as $`C_E\le2`$ loses control of the multiplier as $`C`$ vanishes. This qubit example has three independent output directions for $`q>0`$. The general theorem counts those directions to bound the gain uniformly, including channels with arbitrarily large finite input registers.
 
 ## What must be added to the textbook foundations
 
@@ -158,48 +158,44 @@ For density matrices $`\rho,\tau`$ with $`\mathrm{supp}\rho\subseteq\mathrm{supp
 D(\rho\|\tau)\le K_\tau(\rho-\tau).
 ```
 
-The form is kept in its state-dependent form throughout the proof. Replacing every spectral weight by an inverse-smallest-eigenvalue estimate would lose the required uniformity. The relevant research ingredients are credited to [Gao–Rouzé](../references/RELATED_WORK.md#gaorouze2022) and [Wolff et al.](../references/RELATED_WORK.md#wolff2025).
+The same estimate applies to a positive operator of arbitrary trace if the divergence includes the trace correction $`\mathrm{Tr}(\tau-\rho)`$. This correction is the linear term in the expansion of $`\mathrm{Tr}(\rho\ln\rho)`$. The proof keeps the spectrum-dependent metric throughout. Replacing every spectral weight by an inverse-smallest-eigenvalue estimate would lose the required uniformity. The relevant research ingredients are credited to [Gao–Rouzé](../references/RELATED_WORK.md#gaorouze2022) and [Wolff et al.](../references/RELATED_WORK.md#wolff2025).
 
-### 2. Find a reference state inside the channel image
+### 2. Regularize an achievable Holevo-radius center
 
-Let $`S=T(\mathcal S(A))`$ be the set of all possible outputs. On their common support, choose $`\sigma\in S`$ maximizing $`\ln\det\sigma`$. The [image-center argument](../science/output_bound.md#an-output-state-that-dominates-the-whole-image) proves
-
-```math
-\mathrm{Tr}(\sigma^{-1}x)\le b,
-\qquad x\le b\sigma
-\quad\text{for every }x\in S.
-```
-
-The first inequality comes from differentiating along a feasible segment from $`\sigma`$ toward $`x`$. The second follows because the largest eigenvalue of a positive matrix is at most its trace. Here $`x\le b\sigma`$ means that $`b\sigma-x`$ is positive, so the inequality holds in every vector expectation. The center can have arbitrarily small nonzero eigenvalues; the coefficient $`b`$ does not depend on them.
-
-For the noisy-qubit example, symmetry gives $`\sigma=I_2/2`$. Then $`K_\sigma(Z)=2\mathrm{Tr}(Z^\dagger Z)`$. A pure input produces $`x-\sigma=q(\rho-I_2/2)`$, whose squared BKM norm is $`q^2`$. Mixed inputs cannot increase this convex quadratic form, so the entire image has squared radius $`M=q^2`$. The same quadratic scale appeared in the small-$`q`$ capacities.
-
-### 3. Charge that radius to an achievable binary ensemble
-
-For each $`x\in S`$, both $`x`$ and $`\sigma`$ are outputs of valid inputs. Their equal-probability binary Holevo information is
+Set $`\eta=\chi(T)`$ in nats. The Holevo information radius gives a state $`\sigma`$ inside the channel’s output image such that every output $`x`$ satisfies $`D(x\Vert\sigma)\le\eta`$. A projective test onto any unit vector gives probabilities $`p`$ from $`x`$ and $`q_0`$ from $`\sigma`$. Data processing and the classical relative-entropy variational bound give
 
 ```math
-J(x,\sigma)
-=S\!\left(\frac{x+\sigma}{2}\right)
--\frac{S(x)+S(\sigma)}2
-\le\chi(T).
+p-\ln(1+(e-1)q_0)
+\le D_{\rm Bern}(p\Vert q_0)
+\le \eta.
 ```
 
-The [segment curvature bound](../science/bkm_geometry.md#a-segment-bound-for-binary-holevo-information) uses $`x\le b\sigma`$ to show $`J(x,\sigma)\ge K_\sigma(x-\sigma)/(8b)`$. Consequently,
+Using $`\ln(1+(e-1)q_0)\le(e-1)q_0`$ simultaneously for all these tests proves $`x\le(e-1)\tau`$, where $`\tau=\sigma+\eta I_B`$. The [proof](../science/output_bound.md) separates the achievable center $`\sigma`$ from the regularized operator $`\tau`$, whose trace is $`1+b\eta`$.
+
+For the noisy-qubit example, symmetry gives $`\sigma=I_2/2`$, with $`K_\tau(Z)=(1/2+\eta)^{-1}\mathrm{Tr}(Z^\dagger Z)`$. A pure input gives $`x-\sigma=q(\rho-I_2/2)`$, with squared BKM norm $`q^2/(1+2\eta)`$. The ordinary and assisted capacities both have the same quadratic scale at small depolarizing parameter.
+
+### 3. Use the entropy radius to bound output deviations
+
+The integral formula for $`D(x\Vert\sigma)`$ measures the BKM curvature in direction $`x-\sigma`$ along the segment from $`\sigma`$ to $`x`$. Every point on that segment lies below $`(e-1)\tau`$. By [BKM order and scaling](../science/bkm_geometry.md#monotonicity-in-the-reference-operator), each curvature value is at least $`K_\tau(x-\sigma)/(e-1)`$. The integral of the weight $`1-s`$ is one half, so
 
 ```math
-M:=\sup_{x\in S}K_\sigma(x-\sigma)
-\le8b\chi(T).
+\frac{K_\tau(x-\sigma)}{2(e-1)}\le D(x\Vert\sigma)\le\chi(T).
 ```
 
-Choosing the center inside the image is essential here: it makes the binary comparison a feasible communication ensemble. This is the operational content of the [radius bound](../science/output_bound.md#binary-communication-controls-the-output-radius).
+Taking the supremum over the outputs gives
+
+```math
+M:=\sup_{x\in S}K_\tau(x-\sigma)\le 2(e-1)\chi(T).
+```
+
+The center determines the displacement $`x-\sigma`$. The floor controls the curvature that measures it.
 
 ### 4. Control entangled inputs using output directions
 
-Define the replacer $`R_\sigma(X)=\mathrm{Tr}(X)\sigma`$ and the difference $`\Delta=T-R_\sigma`$. The translated image spans an $`r`$-dimensional real space of Hermitian matrices. Choose a BKM-orthonormal Hermitian basis $`F_1,\ldots,F_r`$ and pull its coordinates back to input observables:
+Define the replacer $`R_\sigma(X)=\mathrm{Tr}(X)\sigma`$ and the difference $`\Delta=T-R_\sigma`$. The translated image spans an $`r`$-dimensional real space of Hermitian matrices. Choose a Hermitian basis $`F_1,\ldots,F_r`$ orthonormal in the BKM form at $`\tau`$. Pull its coordinates back to input observables:
 
 ```math
-H_j=\Delta^*\!\left(D\log_\sigma(F_j)\right).
+H_j=\Delta^*\!\left(D\log_\tau(F_j)\right).
 ```
 
 Here $`\Delta^*`$ is the Hilbert–Schmidt adjoint. Each $`H_j`$ is Hermitian, and its squared expectation on any pure input is at most $`M`$. Its extremal eigenvector therefore gives $`\|H_j\|_\infty^2\le M`$.
@@ -207,7 +203,7 @@ Here $`\Delta^*`$ is the Hilbert–Schmidt adjoint. Each $`H_j`$ is Hermitian, a
 For a pure input/reference state $`\psi_{RA}`$, the [complete amplification estimate](../science/output_bound.md#complete-amplification-through-output-coordinates) now gives
 
 ```math
-K_{\rho_R\otimes\sigma}
+K_{\rho_R\otimes\tau}
 \bigl((\mathrm{id}_R\otimes\Delta)(\psi_{RA})\bigr)
 \le2\sum_{j=1}^r\|H_j\|_\infty^2
 \le2rM.
@@ -215,31 +211,28 @@ K_{\rho_R\otimes\sigma}
 
 This step requires more than the ordinary state-radius bound. The proof expands the joint state in Schmidt coordinates, applies the [Schmidt-weight inequality](../science/bkm_geometry.md#the-schmidt-weight-inequality), and sums the result through the Hermitian output coordinates. Its compressed-operator identity treats a non-full-rank input marginal correctly. Zero Schmidt coefficients are removed by restricting to their support; no positive lower bound on the remaining coefficients is assumed. These are the steps that remove dependence on input and reference dimension.
 
-### 5. Reconnect the geometry to operational rates
+### 5. Account for the floor and return to communication rates
 
-For $`\omega_{RB}=(\mathrm{id}_R\otimes T)(\psi_{RA})`$, the [final comparison](../science/output_bound.md#from-the-quadratic-bound-to-capacities) is
+Write $`\omega_{RB}=(\mathrm{id}_R\otimes T)(\psi_{RA})`$. Comparing it with $`A=\rho_R\otimes\tau`$ requires the corrected relative entropy $`\mathrm{Tr}[\omega(\ln\omega-\ln A)]+\mathrm{Tr}(A-\omega)`$. This is mutual information plus a nonnegative marginal comparison with $`\tau`$.
+
+The difference $`\omega_{RB}-A`$ is the centered joint deviation from step 4 minus $`\eta\rho_R\otimes I_B`$. The shift has squared BKM norm $`\eta^2\mathrm{Tr}\,\tau^{-1}\le b\eta`$, so the BKM norm triangle inequality gives
 
 ```math
-\begin{aligned}
 I(R:B)_\omega
-&\le D(\omega_{RB}\|\rho_R\otimes\sigma)\\
-&\le K_{\rho_R\otimes\sigma}
-       (\omega_{RB}-\rho_R\otimes\sigma)\\
-&\le2rM\le16br\,\chi(T).
-\end{aligned}
+\le \left(\sqrt{2rM}+\sqrt{b\eta}\right)^2
+\le \left(2\sqrt{(e-1)r}+\sqrt b\right)^2\chi(T).
 ```
 
-Wilde's assisted-capacity theorem identifies the maximum of the first line with $`C_E(T)`$. His ordinary-capacity theorem supplies $`\chi(T)\le C(T)`$. The result is therefore
+Wilde’s assisted-capacity theorem identifies the maximum on the left with $`C_E(T)`$. The ordinary-capacity theorem gives $`\chi(T)\le C(T)`$. Since $`r\le b^2-1`$, the multiplier grows at most quadratically in $`b`$. The [final comparison](../science/output_bound.md#from-the-quadratic-bound-to-capacities) includes the support and zero-capacity cases.
 
-```math
-C_E(T)\le16br\,\chi(T)
-\le16b(b^2-1)C(T).
-```
+### 6. Test the dimension dependence with a channel family
 
-The primary [BSST](../references/RELATED_WORK.md#bsst2002) and [HSW](../references/RELATED_WORK.md#holevo1998) results supply the operational theorems; the BKM estimates and output-image argument supply the uniform comparison. The conclusion applies to every finite input dimension and to arbitrarily ill-conditioned output images. Optimal constants, the best growth with $`b`$, and infinite-dimensional input spaces remain outside the proved claim. See [interpretation and open scaling](../science/interpretation.md#the-remaining-question).
+A measure-and-prepare channel can give each of the $`b^2-1`$ traceless Hermitian output directions an independent role. Anticommuting input observables constrain the ordinary output displacements to a Euclidean ball. A maximally entangled input instead puts a distinct reference correlation in each of those directions. In the weak-signal limit the ordinary and assisted quantities are both quadratic in signal size, and their ratio approaches $`b^2-1`$. For commuting outputs there are at most $`b-1`$ independent directions. An argument that resolves one classical event at a time gives $`C_E\le bC`$, and the diagonal version of the family yields a ratio approaching $`b-1`$.
+
+The [sharp-order families](../science/sharp_examples.md) give the construction and entropy calculation. [Shor’s additivity theorem](../references/RELATED_WORK.md#shor2002) ensures that the single-use Holevo quantity equals the full ordinary capacity for these entanglement-breaking channels. The exact universal multiplier remains open.
 
 ## Connect this bridge to the project map
 
-The [background milestones M01–M14](MILESTONES.md#background-preliminaries) assemble the channel, entropy, capacity, support, and geometric concepts needed to state the comparison. The [narrative milestones M15–M30](MILESTONES.md#narrative-innovation) connect the dominating center, binary radius, amplification argument, examples, and scope into the complete result.
+The [background milestones M01–M14](MILESTONES.md#background-preliminaries) assemble the channel, entropy, capacity, support, and geometric concepts needed to state the comparison. The [narrative milestones M15–M30](MILESTONES.md#narrative-innovation) connect the regularized Holevo center, complete amplification, communication rates, and matching channel families.
 
 For a direct mathematical route, continue with [BKM geometry](../science/bkm_geometry.md), the [output-dimension proof](../science/output_bound.md), and the [precise comparison with earlier work](../references/RELATED_WORK.md#position-of-the-result).

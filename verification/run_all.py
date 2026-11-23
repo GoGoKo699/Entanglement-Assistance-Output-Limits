@@ -11,4 +11,5 @@ checks = (
 for script, reference in checks:
     subprocess.run([sys.executable, str(root / script), '--compare',
                     str(root / 'expected' / reference)], check=True)
+subprocess.run([sys.executable, str(root / 'check_sharp_output.py')], check=True)
 print('PASS: all finite scientific checks completed.')
