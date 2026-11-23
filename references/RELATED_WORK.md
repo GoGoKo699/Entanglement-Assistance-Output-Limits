@@ -52,7 +52,7 @@ Relevant locations in [version 3](https://arxiv.org/html/2408.17290v3): Section 
 
 Paula Belzig, *Quantum communication and fault-tolerance*, PhD thesis, University of Copenhagen (2023). [University manuscript](https://noter.math.ku.dk/phd23pb.pdf). [arXiv:2412.20736](https://arxiv.org/abs/2412.20736), posted in 2024.
 
-Relevant locations: Chapter 4, especially Theorem 4.4.2, printed pages 129–130, and Section 4.5, printed pages 131–132. The near-replacer theorem assumes $`\|T-R_{\sigma_*}\|_{1\to1}\le1/(2d_B)`$ and retains $`\lambda_{\min}(\sigma_*)^{-1}`$. The thesis was submitted and defended in 2023; the later arXiv posting does not change that thesis date.
+Relevant locations: Chapter 4, especially Theorem 4.4.2, printed pages 129–130, and Section 4.5, printed pages 131–132. The near-replacer theorem assumes $`\Vert T-R_{\sigma_*}\Vert_{1\to1}\le1/(2d_B)`$ and retains $`\lambda_{\min}(\sigma_*)^{-1}`$. The thesis was submitted and defended in 2023; the later arXiv posting does not change that thesis date.
 
 <a id="gaorouze2022"></a>
 

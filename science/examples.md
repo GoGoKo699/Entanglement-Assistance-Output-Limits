@@ -71,7 +71,7 @@ For an input with Bloch vector $`\mathbf v`$, the probabilities obey
 ```math
 p_y=\frac{1+\mathbf n_y\cdot\mathbf v}{3},
 \qquad
-\sum_y p_y^2=\frac13+\frac{\|\mathbf v_\parallel\|^2}{6}\le\frac12.
+\sum_y p_y^2=\frac13+\frac{\Vert\mathbf v_\parallel\Vert^2}{6}\le\frac12.
 ```
 
 Hence $`H(p)\ge-\log_2\sum_y p_y^2\ge1`$. An input antipodal to one trine vector gives $`(0,1/2,1/2)`$, attaining this minimum. The uniform ensemble of the three antipodal inputs has uniform average output, and consequently

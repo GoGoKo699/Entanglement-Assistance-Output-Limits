@@ -35,7 +35,7 @@ Every output is supported on $`Q`$ because positivity gives $`T(\rho)\le T(I_A)`
 
 Write $`\eta=\chi(T)`$ in nats. If $`\eta=0`$, every pair of output states has zero equal-weight Holevo information. Strict concavity of entropy implies that the two states coincide. Hence $`T`$ is a replacer, and we assume $`\eta>0`$ for the rest of the proof.
 
-**Lemma 1.** There is a state $`\sigma\in S`$ with $`D(x\|\sigma)\le\eta`$ for all $`x\in S`$. The positive operator $`\tau=\sigma+\eta I_Q`$ satisfies
+**Lemma 1.** There is a state $`\sigma\in S`$ with $`D(x\Vert\sigma)\le\eta`$ for all $`x\in S`$. The positive operator $`\tau=\sigma+\eta I_Q`$ satisfies
 
 ```math
 x\le(e-1)\tau\qquad\text{for all }x\in S.
@@ -44,15 +44,15 @@ x\le(e-1)\tau\qquad\text{for all }x\in S.
 **Proof.** The set of pairs $`(x,H(x))`$, with $`H(x)=-\mathrm{Tr}(x\ln x)`$, is compact. Its convex hull is compact by Carathéodory's theorem and contains all pairs of ensemble means and average entropies. Maximizing the continuous difference between mean-state entropy and average entropy in this convex hull gives a finite optimal Holevo ensemble $`(p_j,x_j)_j`$. Let $`\sigma=\sum_j p_jx_j`$ be its mean. Include any $`x\in S`$ with weight $`u\in(0,1)`$ and scale the old weights by $`1-u`$. The new mean is $`\sigma_u=(1-u)\sigma+ux`$. Expanding the new ensemble's Holevo information gives
 
 ```math
-(1-u)\eta+(1-u)D(\sigma\|\sigma_u)+uD(x\|\sigma_u)\le\eta.
+(1-u)\eta+(1-u)D(\sigma\Vert\sigma_u)+uD(x\Vert\sigma_u)\le\eta.
 ```
 
-Nonnegativity of relative entropy gives $`D(x\|\sigma_u)\le\eta`$. Lower semicontinuity as $`u\downarrow0`$ then yields $`D(x\|\sigma)\le\eta`$. All outputs are supported on $`\sigma`$, which is therefore positive definite on $`Q`$.
+Nonnegativity of relative entropy gives $`D(x\Vert\sigma_u)\le\eta`$. Lower semicontinuity as $`u\downarrow0`$ then yields $`D(x\Vert\sigma)\le\eta`$. All outputs are supported on $`\sigma`$, which is therefore positive definite on $`Q`$.
 
 For a unit vector $`v\in Q`$, measure the two-outcome projector onto $`v`$. Write $`p=\langle v|x|v\rangle`$ and $`q=\langle v|\sigma|v\rangle`$. By data processing the relative entropy of the resulting Bernoulli distributions is at most $`\eta`$. Its variational lower bound with test function equal to one on the first outcome and zero on the other gives
 
 ```math
-\eta\ge D_{\mathrm{Ber}}(p\|q)
+\eta\ge D_{\mathrm{Ber}}(p\Vert q)
 \ge p-\ln\bigl(1+(e-1)q\bigr)
 \ge p-(e-1)q.
 ```
@@ -76,7 +76,7 @@ M\le 2(e-1)\eta.
 **Proof.** For any $`x\in S`$, fix $`Z=x-\sigma`$ and let $`z_s=\sigma+sZ`$. Lemma 1 bounds the whole segment by $`(e-1)\tau`$. The [relative-entropy integral and metric order](bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound) give
 
 ```math
-\eta\ge D(x\|\sigma)=\int_0^1(1-s)K_{z_s}(Z)\,ds
+\eta\ge D(x\Vert\sigma)=\int_0^1(1-s)K_{z_s}(Z)\,ds
 \ge\frac{K_\tau(Z)}{2(e-1)}.
 ```
 
@@ -130,7 +130,7 @@ K_\tau(\Delta(X))
 For every unit input vector $`v`$, the second identity is at most $`M=\sup_{x\in S}K_\tau(x-\sigma)`$ when $`X=|v\rangle\langle v|`$. In particular, choosing an extremal eigenvector of $`H_j`$ proves
 
 ```math
-\|H_j\|_\infty^2\le M.
+\Vert H_j\Vert_\infty^2\le M.
 ```
 
 **Lemma 3.** For every pure reference/input state $`\psi`$, with reference marginal $`\rho_R`$,
@@ -176,7 +176,7 @@ The sums over $`k,l`$ run only over the Schmidt subspace. Since $`H_j`$ is Hermi
 &\le\sum_{k,l}(p_k+p_l)|(H_j)_{lk}|^2\\
 &=2\mathrm{Tr}\!\left[\rho_A(PH_jP)^2\right]\\
 &\le2\mathrm{Tr}(\rho_AH_j^2)\\
-&\le2\|H_j\|_\infty^2.
+&\le2\Vert H_j\Vert_\infty^2.
 \end{aligned}
 ```
 
@@ -187,7 +187,7 @@ PH_j^2P-(PH_jP)^2
 =PH_j(I-P)H_jP\ge0.
 ```
 
-Summing over $`j`$ and using $`\|H_j\|_\infty^2\le M`$ proves the lemma. $`\square`$
+Summing over $`j`$ and using $`\Vert H_j\Vert_\infty^2\le M`$ proves the lemma. $`\square`$
 
 The estimate contains neither the input dimension nor an inverse power of a Schmidt coefficient. The factor $`r`$ counts Hermitian directions in the output image, even when the input space supporting those directions is much larger.
 
@@ -198,8 +198,8 @@ For a pure reference/input state $`\psi`$, set $`\omega=(\mathrm{id}_R\otimes T)
 The [extended relative entropy](bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound) permits the generally unnormalized reference operator $`\tau`$. Its chain rule follows by expanding the tensor-product logarithm and the trace correction.
 
 ```math
-D_{\mathrm{ext}}(\omega\|\rho_R\otimes\tau)
-=I(R:B)_\omega+D_{\mathrm{ext}}(\omega_B\|\tau)
+D_{\mathrm{ext}}(\omega\Vert\rho_R\otimes\tau)
+=I(R:B)_\omega+D_{\mathrm{ext}}(\omega_B\Vert\tau)
 \ge I(R:B)_\omega.
 ```
 

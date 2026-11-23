@@ -307,7 +307,7 @@ M:=\sup_{x\in\mathcal S_T}K_\tau(x-\sigma)
 
 **Central question:** Why can each output coordinate be controlled without counting input basis states?
 
-**Understanding target:** Explain how a Hermitian output basis orthonormal in the BKM form at $`\tau`$ defines the dual Hermitian input operators $`H_j`$. Relate Parseval's identity to the sum of squared coefficient expectations. Use the full set of pure input states and Hermiticity to obtain $`\|H_j\|_\infty^2\le M`$.
+**Understanding target:** Explain how a Hermitian output basis orthonormal in the BKM form at $`\tau`$ defines the dual Hermitian input operators $`H_j`$. Relate Parseval's identity to the sum of squared coefficient expectations. Use the full set of pure input states and Hermiticity to obtain $`\Vert H_j\Vert_\infty^2\le M`$.
 
 **Dependencies and story role:** M11, M12, M16, M17. The ordinary-output radius becomes a dimension-independent norm certificate for each coordinate.
 

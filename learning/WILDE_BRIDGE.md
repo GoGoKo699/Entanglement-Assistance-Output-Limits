@@ -155,7 +155,7 @@ For Hermitian $`Z`$, this measures the curvature of $`\mathrm{Tr}(\tau\ln\tau)`$
 For density matrices $`\rho,\tau`$ with $`\mathrm{supp}\rho\subseteq\mathrm{supp}\tau`$, restrict to $`\mathrm{supp}\tau`$, where $`\tau>0`$. The inherited [BKM identities](../science/bkm_geometry.md#the-quadratic-form) and [relative-entropy bound](../science/bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound) then give
 
 ```math
-D(\rho\|\tau)\le K_\tau(\rho-\tau).
+D(\rho\Vert\tau)\le K_\tau(\rho-\tau).
 ```
 
 The same estimate applies to a positive operator of arbitrary trace if the divergence includes the trace correction $`\mathrm{Tr}(\tau-\rho)`$. This correction is the linear term in the expansion of $`\mathrm{Tr}(\rho\ln\rho)`$. The proof keeps the spectrum-dependent metric throughout. Replacing every spectral weight by an inverse-smallest-eigenvalue estimate would lose the required uniformity. The relevant research ingredients are credited to [Gao–Rouzé](../references/RELATED_WORK.md#gaorouze2022) and [Wolff et al.](../references/RELATED_WORK.md#wolff2025).
@@ -198,14 +198,14 @@ Define the replacer $`R_\sigma(X)=\mathrm{Tr}(X)\sigma`$ and the difference $`\D
 H_j=\Delta^*\!\left(D\log_\tau(F_j)\right).
 ```
 
-Here $`\Delta^*`$ is the Hilbert–Schmidt adjoint. Each $`H_j`$ is Hermitian, and its squared expectation on any pure input is at most $`M`$. Its extremal eigenvector therefore gives $`\|H_j\|_\infty^2\le M`$.
+Here $`\Delta^*`$ is the Hilbert–Schmidt adjoint. Each $`H_j`$ is Hermitian, and its squared expectation on any pure input is at most $`M`$. Its extremal eigenvector therefore gives $`\Vert H_j\Vert_\infty^2\le M`$.
 
 For a pure input/reference state $`\psi_{RA}`$, the [complete amplification estimate](../science/output_bound.md#complete-amplification-through-output-coordinates) now gives
 
 ```math
 K_{\rho_R\otimes\tau}
 \bigl((\mathrm{id}_R\otimes\Delta)(\psi_{RA})\bigr)
-\le2\sum_{j=1}^r\|H_j\|_\infty^2
+\le2\sum_{j=1}^r\Vert H_j\Vert_\infty^2
 \le2rM.
 ```
 

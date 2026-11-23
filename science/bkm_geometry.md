@@ -83,17 +83,17 @@ Integrating the quadratic-form inequality proves the claim. The transpose is tak
 For positive semidefinite $`\rho`$ and positive definite $`\tau`$, define the extended relative entropy by
 
 ```math
-D_{\mathrm{ext}}(\rho\|\tau)
+D_{\mathrm{ext}}(\rho\Vert\tau)
 =\mathrm{Tr}\bigl[\rho(\ln\rho-\ln\tau)\bigr]
 -\mathrm{Tr}\rho+\mathrm{Tr}\tau.
 ```
 
-The convention is $`0\ln0=0`$. For density matrices this is the usual relative entropy $`D(\rho\|\tau)`$. The trace correction makes the expression the first-order remainder of the convex function $`Z\mapsto\mathrm{Tr}(Z\ln Z)`$, so it is nonnegative. A reference that is positive only on a common support can be treated by restricting every operator to that support.
+The convention is $`0\ln0=0`$. For density matrices this is the usual relative entropy $`D(\rho\Vert\tau)`$. The trace correction makes the expression the first-order remainder of the convex function $`Z\mapsto\mathrm{Tr}(Z\ln Z)`$, so it is nonnegative. A reference that is positive only on a common support can be treated by restricting every operator to that support.
 
 **Lemma 2.** Let $`Z=\rho-\tau`$ and $`\rho_t=\tau+tZ`$. Then
 
 ```math
-D_{\mathrm{ext}}(\rho\|\tau)
+D_{\mathrm{ext}}(\rho\Vert\tau)
 =\int_0^1(1-t)K_{\rho_t}(Z)\,dt
 \le K_\tau(Z).
 ```
