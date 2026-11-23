@@ -50,7 +50,7 @@ Indeed, the entire segment lies between $`(1-\alpha)\sigma`$ and $`(1+\alpha)\si
 \frac{bt^2}{2(1-\alpha)}.
 ```
 
-For the assisted capacity, use an arbitrary pure reference-input state $`\psi`$ in Schmidt form with coefficients $`\sqrt{p_k}`$. On its reference support let $`\rho_R=\operatorname{diag}(p_k)`$ and let $`P`$ project onto the corresponding input Schmidt subspace. With the matrix of $`P\Gamma_jP`$ expressed in the Schmidt basis, the output is $`\rho_R\otimes u+\Delta_\psi`$ with
+For the assisted capacity, use an arbitrary pure reference-input state $`\psi`$ in Schmidt form with coefficients $`\sqrt{p_k}`$. On its reference support let $`\rho_R=\mathrm{diag}(p_k)`$ and let $`P`$ project onto the corresponding input Schmidt subspace. With the matrix of $`P\Gamma_jP`$ expressed in the Schmidt basis, the output is $`\rho_R\otimes u+\Delta_\psi`$ with
 
 ```math
 \Delta_\psi=t\sum_{j=1}^m
