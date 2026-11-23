@@ -92,31 +92,20 @@ This is the affine dimension of the output image and is independent of the choic
 **Theorem.** Every channel in the stated model satisfies
 
 ```math
-C_E(T)\le16br\,\chi(T)
-\le16b(b^2-1)\chi(T)
-\le16b(b^2-1)C(T).
+C_E(T)\le\bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2\,\chi(T)
+\le\bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2\,C(T).
 ```
 
-There is no common upper bound on input dimension in this statement. There is also no lower bound on the nonzero eigenvalues of the output states, a distinguished output center, or an optimizing input.
+The input dimension can be arbitrarily large and the nonzero output eigenvalues can be arbitrarily small. When $`C(T)=0`$ the inequality implies $`C_E(T)=0`$. If $`b=1`$ or $`r=0`$, the channel is a replacer and $`C_E=C=\chi=0`$.
 
-When $`C(T)>0`$, division gives an enhancement bound. When $`C(T)=0`$, the capacity inequality applies directly and implies $`C_E(T)=0`$. In particular, $`b=1`$ or $`r=0`$ gives zero for all three information quantities.
-
-For an output image consisting of mutually commuting states, simultaneous diagonalization gives $`r\le b-1`$ and hence the immediate refinement
-
-```math
-C_E(T)\le16b(b-1)\,C(T).
-```
-
-This does not assert that entanglement is useless for every channel with classical output. The [measurement example](examples.md) explains the distinction.
+For positive $`C(T)`$, the theorem bounds the ratio by $`O(b^2)`$. The [measure-and-prepare witness](sharp_examples.md) makes the ratio approach $`b^2-1`$ at each fixed $`b\ge2`$, so the quadratic order is sharp. When the output image consists of mutually commuting states, simultaneous diagonalization gives $`r\le b-1`$. The diagonal witness approaches $`b-1`$, and the [commuting-output proof](sharp_examples.md#commuting-outputs-give-a-linear-law) gives $`C_E\le b\chi`$.
 
 ## Proof route and interpretation
 
-The [BKM geometry page](bkm_geometry.md) states and proves the inherited metric identities. The [main proof](output_bound.md) has three steps:
+The [BKM geometry page](bkm_geometry.md) develops the metric comparisons. The [main proof](output_bound.md) starts with the mean state of an optimal Holevo ensemble:
 
-1. Choose an output state $`\sigma`$ satisfying $`x\le b\sigma`$ for every output $`x`$.
-2. Use a feasible binary ensemble to bound the BKM squared radius of the entire image by $`8b\chi(T)`$.
-3. Resolve the channel into $`r`$ Hermitian output directions and control entangled-input amplification by $`2r`$.
+1. Bound all image states above by a constant multiple of the regularized center $`\sigma+\chi(T)I`$.
+2. Use the relative-entropy radius to bound the image's BKM squared radius by $`2(e-1)\chi(T)`$.
+3. Resolve the joint channel perturbation into $`r`$ Hermitian output directions and account for the regularization in the reference state.
 
-The capacity theorems above then give the result. The [examples](examples.md) distinguish zero capacity from its limit and show why dependence on output dimension is necessary.
-
-The theorem establishes a uniform obstruction, not the optimal enhancement factor. It does not make a coding-efficiency claim, constrain blocklength, or cover infinite-dimensional input spaces. The [interpretation](interpretation.md) gives the consequences and the remaining scaling question.
+The [sharp examples](sharp_examples.md) employ the same classical-capacity definitions as the converse. The exact worst-case constant, the requirements on input size, and the gain with finite entanglement supply are separate questions. See [interpretation](interpretation.md).

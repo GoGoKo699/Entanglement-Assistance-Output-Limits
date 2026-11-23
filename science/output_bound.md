@@ -2,28 +2,26 @@
 
 [Model and notation](model.md) · [BKM geometry](bkm_geometry.md)
 
-An arbitrarily large input space cannot provide an unbounded relative communication gain from preshared entanglement when the channel-output dimension remains fixed. We prove this by controlling the geometry of the channel's entire output-state image.
+An arbitrarily large input space cannot provide an unbounded relative communication gain from preshared entanglement when the channel-output dimension remains fixed. The gain is at most quadratic in the effective output dimension. The proof uses the Holevo information to set a positive floor on the output reference operator and to bound the resulting quadratic form.
 
-The [model page](model.md) defines the memoryless channel $`T`$, its ordinary classical capacity $`C(T)`$, its entanglement-assisted classical capacity $`C_E(T)`$, and its single-use Holevo quantity $`\chi(T)`$. Here $`b=\mathrm{rank}T(I_A)`$ is the effective output dimension, and $`r`$ is the real affine dimension of the output-state image. The receiver's share of the preshared entanglement is unrestricted; $`b`$ counts only the system delivered by one channel use.
+The [model page](model.md) defines the memoryless channel $`T`$, its ordinary classical capacity $`C(T)`$, its entanglement-assisted classical capacity $`C_E(T)`$, and its single-use Holevo quantity $`\chi(T)`$. Here $`b=\mathrm{rank}T(I_A)`$ is the effective output dimension, and $`r`$ is the real affine dimension of the output-state image. The receiver's share of the preshared entanglement is unrestricted. Here $`b`$ counts only the system delivered by one channel use.
 
 ## The theorem
 
-**Theorem.** Every finite-dimensional completely positive trace-preserving channel satisfies
+**Theorem.** With $`e=\exp(1)`$, every finite-dimensional completely positive trace-preserving channel satisfies
 
 ```math
 \begin{aligned}
-C_E(T)
-&\le16br\,\chi(T)\\
-&\le16b(b^2-1)\chi(T)\\
-&\le16b(b^2-1)C(T).
+C_E(T)&\le \left(2\sqrt{(e-1)r}+\sqrt b\right)^2\chi(T)\\
+&\le\left(2\sqrt{(e-1)r}+\sqrt b\right)^2 C(T).
 \end{aligned}
 ```
 
-All information quantities use the same units. The proof below uses natural logarithms; dividing every quantity by $`\ln2`$ gives the identical theorem in bits. The bound is uniform over all finite input dimensions and requires no lower bound on nonzero output eigenvalues.
+The proof uses natural logarithms. Dividing both sides by $`\ln 2`$ gives the same inequalities in bits. The dimension bound $`r\le b^2-1`$ gives the quadratic estimate, uniformly over the input dimension and the nonzero output spectrum. For commuting outputs, $`r\le b-1`$ and the estimate is linear in $`b`$.
 
-If $`r=0`$, the channel is a replacer and all three information quantities vanish. The capacity inequality includes this case without taking a ratio. The constant and its dimension dependence are not asserted to be optimal; [examples](examples.md) explain the comparison with sharper results for special channel families.
+If $`r=0`$, the channel is a replacer and all three information quantities vanish. The [weak-signal family](sharp_examples.md) matches both dimension orders. It approaches the ratio $`b^2-1`$ in the general case and $`b-1`$ for commuting outputs. [Worked comparisons](examples.md) show how particular channel classes can yield different constants.
 
-## An output state that dominates the whole image
+## The regularized Holevo center
 
 Write
 
@@ -33,55 +31,62 @@ S=T(\mathcal S(A)),
 Q=\mathrm{supp}T(I_A).
 ```
 
-Every output is supported on $`Q`$: for a density matrix $`\rho`$, positivity gives $`T(\rho)\le T(I_A)`$. We restrict the receiving space to $`Q`$, whose dimension is $`b`$. The state $`T(I_A/\dim A)`$ is positive definite on this space.
+Every output is supported on $`Q`$ because positivity gives $`T(\rho)\le T(I_A)`$ for every input density matrix $`\rho`$. We restrict the receiving space to $`Q`$, whose dimension is $`b`$. The state $`T(I_A/\dim A)`$ is positive definite there.
 
-**Lemma 1.** There is a positive definite $`\sigma\in S`$ such that
+Write $`\eta=\chi(T)`$ in nats. If $`\eta=0`$, every pair of output states has zero equal-weight Holevo information. Strict concavity of entropy implies that the two states coincide. Hence $`T`$ is a replacer, and we assume $`\eta>0`$ for the rest of the proof.
+
+**Lemma 1.** There is a state $`\sigma\in S`$ with $`D(x\Vert\sigma)\le\eta`$ for all $`x\in S`$. The positive operator $`\tau=\sigma+\eta I_Q`$ satisfies
 
 ```math
-x\le b\sigma\qquad\text{for every }x\in S.
+x\le(e-1)\tau\qquad\text{for all }x\in S.
 ```
 
-**Proof.** The image $`S`$ is compact and convex. Maximize the determinant on $`S`$. Its maximum is positive because $`S`$ contains a positive definite state, so a maximizing state $`\sigma`$ is positive definite. Equivalently, it maximizes $`\ln\det\sigma`$.
-
-For each $`x\in S`$, the segment $`(1-t)\sigma+tx`$ remains in $`S`$. The one-sided derivative at a maximum is nonpositive:
+**Proof.** The set of pairs $`(x,H(x))`$, with $`H(x)=-\mathrm{Tr}(x\ln x)`$, is compact. Its convex hull is compact by Carathéodory's theorem and contains all pairs of ensemble means and average entropies. Maximizing the continuous difference between mean-state entropy and average entropy in this convex hull gives a finite optimal Holevo ensemble $`(p_j,x_j)_j`$. Let $`\sigma=\sum_j p_jx_j`$ be its mean. Include any $`x\in S`$ with weight $`u\in(0,1)`$ and scale the old weights by $`1-u`$. The new mean is $`\sigma_u=(1-u)\sigma+ux`$. Expanding the new ensemble's Holevo information gives
 
 ```math
-\mathrm{Tr}\bigl[\sigma^{-1}(x-\sigma)\bigr]\le0,
-\qquad
-\mathrm{Tr}(\sigma^{-1}x)\le b.
+(1-u)\eta+(1-u)D(\sigma\Vert\sigma_u)+uD(x\Vert\sigma_u)\le\eta.
 ```
 
-The positive matrix $`\sigma^{-1/2}x\sigma^{-1/2}`$ has largest eigenvalue at most its trace. It is therefore at most $`bI`$, which proves the claim. $`\square`$
+Nonnegativity of relative entropy gives $`D(x\Vert\sigma_u)\le\eta`$. Lower semicontinuity as $`u\downarrow0`$ then yields $`D(x\Vert\sigma)\le\eta`$. All outputs are supported on $`\sigma`$, which is therefore positive definite on $`Q`$.
 
-The state $`\sigma`$ is used only to prove the bound. No efficient procedure for finding it or preparing a code is assumed.
-
-## Binary communication controls the output radius
-
-Use the BKM form $`K_\sigma`$ from the [geometry page](bkm_geometry.md#the-quadratic-form), and set
+For a unit vector $`v\in Q`$, measure the two-outcome projector onto $`v`$. Write $`p=\langle v|x|v\rangle`$ and $`q=\langle v|\sigma|v\rangle`$. By data processing the relative entropy of the resulting Bernoulli distributions is at most $`\eta`$. Its variational lower bound with test function equal to one on the first outcome and zero on the other gives
 
 ```math
-M=\sup_{x\in S}K_\sigma(x-\sigma).
+\eta\ge D_{\mathrm{Ber}}(p\Vert q)
+\ge p-\ln\bigl(1+(e-1)q\bigr)
+\ge p-(e-1)q.
+```
+
+The variational inequality follows by tilting the probabilities $`(q,1-q)`$ by the factors $`(e,1)`$, normalizing, and applying nonnegativity of relative entropy to the tilted distribution. The bound for every $`v`$ gives $`x\le(e-1)\sigma+\eta I_Q\le(e-1)\tau`$. $`\square`$
+
+## Relative entropy controls the output radius
+
+Use the BKM form $`K_\tau`$ from the [geometry page](bkm_geometry.md#the-quadratic-form), and set
+
+```math
+M=\sup_{x\in S}K_\tau(x-\sigma).
 ```
 
 **Lemma 2.** The output radius satisfies
 
 ```math
-M\le8b\,\chi(T).
+M\le 2(e-1)\eta.
 ```
 
-**Proof.** For any $`x\in S`$, both $`x`$ and $`\sigma`$ are at most $`b\sigma`$. The [binary segment bound](bkm_geometry.md#a-segment-bound-for-binary-holevo-information) gives
+**Proof.** For any $`x\in S`$, fix $`Z=x-\sigma`$ and let $`z_s=\sigma+sZ`$. Lemma 1 bounds the whole segment by $`(e-1)\tau`$. The [relative-entropy integral and metric order](bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound) give
 
 ```math
-J(x,\sigma)\ge\frac{1}{8b}K_\sigma(x-\sigma).
+\eta\ge D(x\Vert\sigma)=\int_0^1(1-s)K_{z_s}(Z)\,ds
+\ge\frac{K_\tau(Z)}{2(e-1)}.
 ```
 
-Both endpoints belong to the channel image. They can therefore be produced by two input states used with equal probability, so $`J(x,\sigma)\le\chi(T)`$. Taking the supremum over $`x`$ proves the claim. $`\square`$
+The integral uses the positive segment points $`s<1`$ and is valid for a singular endpoint by continuity. Taking the supremum proves the claim. $`\square`$
 
-This estimate retains the full state-dependent metric. It remains valid when the smallest eigenvalue of the chosen center is arbitrarily small; no inverse-minimum-eigenvalue factor appears in the bound.
+The floor $`\eta I_Q`$ controls the metric as an output eigenvalue approaches zero. The final step accounts for its contribution to the joint quadratic form.
 
 ## Complete amplification through output coordinates
 
-Define the replacement channel and its difference from $`T`$ by
+For any center $`\sigma\in S`$ and positive definite metric reference $`\tau`$ on $`Q`$, define the replacement channel and its difference from $`T`$.
 
 ```math
 R_\sigma(X)=\mathrm{Tr}(X)\sigma,
@@ -91,7 +96,7 @@ R_\sigma(X)=\mathrm{Tr}(X)\sigma,
 
 Let $`V=\mathrm{span}_{\mathbb R}(S-\sigma)`$. Because $`\sigma\in S`$, this space has dimension $`r`$ and consists of traceless Hermitian matrices. Every Hermitian input is a real linear combination of density matrices, so $`\Delta`$ maps Hermitian inputs into $`V`$ and arbitrary complex inputs into $`V+iV`$.
 
-Choose a real $`K_\sigma`$-orthonormal Hermitian basis $`F_1,\ldots,F_r`$ of $`V`$. Its complexification is an orthonormal basis of $`V+iV`$ for the sesquilinear BKM inner product. Write $`\Delta^*`$ for the Hilbert–Schmidt adjoint, defined by
+Choose a real $`K_\tau`$-orthonormal Hermitian basis $`F_1,\ldots,F_r`$ of $`V`$. Its complexification is an orthonormal basis of $`V+iV`$ for the sesquilinear BKM inner product. Write $`\Delta^*`$ for the Hilbert–Schmidt adjoint, defined by
 
 ```math
 \mathrm{Tr}\bigl[Y^\dagger\Delta(X)\bigr]
@@ -101,13 +106,13 @@ Choose a real $`K_\sigma`$-orthonormal Hermitian basis $`F_1,\ldots,F_r`$ of $`V
 Set
 
 ```math
-H_j=\Delta^*\!\left(D\log_\sigma(F_j)\right).
+H_j=\Delta^*\!\left(D\log_\tau(F_j)\right).
 ```
 
-Each $`H_j`$ is Hermitian because both maps in its definition preserve Hermitian operators. Self-adjointness of $`D\log_\sigma`$ and the adjoint identity give
+Each $`H_j`$ is Hermitian because both maps in its definition preserve Hermitian operators. Self-adjointness of $`D\log_\tau`$ and the adjoint identity give
 
 ```math
-\langle F_j,\Delta(X)\rangle_\sigma
+\langle F_j,\Delta(X)\rangle_\tau
 =\mathrm{Tr}(H_jX).
 ```
 
@@ -117,21 +122,21 @@ The orthonormal expansion and Parseval identity are therefore
 \begin{aligned}
 \Delta(X)
 &=\sum_{j=1}^r\mathrm{Tr}(H_jX)F_j,\\
-K_\sigma(\Delta(X))
+K_\tau(\Delta(X))
 &=\sum_{j=1}^r|\mathrm{Tr}(H_jX)|^2.
 \end{aligned}
 ```
 
-For every unit input vector $`v`$, the second identity is at most $`M`$ when $`X=|v\rangle\langle v|`$. In particular, choosing an extremal eigenvector of $`H_j`$ proves
+For every unit input vector $`v`$, the second identity is at most $`M=\sup_{x\in S}K_\tau(x-\sigma)`$ when $`X=|v\rangle\langle v|`$. In particular, choosing an extremal eigenvector of $`H_j`$ proves
 
 ```math
-\|H_j\|_\infty^2\le M.
+\Vert H_j\Vert_\infty^2\le M.
 ```
 
 **Lemma 3.** For every pure reference/input state $`\psi`$, with reference marginal $`\rho_R`$,
 
 ```math
-K_{\rho_R\otimes\sigma}
+K_{\rho_R\otimes\tau}
 \bigl((\mathrm{id}_R\otimes\Delta)(\psi)\bigr)
 \le2rM,
 ```
@@ -147,17 +152,17 @@ where the reference system is restricted to the support of $`\rho_R`$.
 \qquad\sum_kp_k=1.
 ```
 
-Let $`P`$ project onto the input Schmidt subspace. On the reference support, $`\rho_R=\mathrm{diag}(p_k)`$ is positive definite. Diagonalize $`\sigma`$ with eigenvalues $`\mu_s>0`$. The spectral BKM formula and the [Schmidt-weight inequality](bkm_geometry.md#the-schmidt-weight-inequality) give
+Let $`P`$ project onto the input Schmidt subspace. On the reference support, $`\rho_R=\mathrm{diag}(p_k)`$ is positive definite. Diagonalize $`\tau`$ with eigenvalues $`\mu_s>0`$. The spectral BKM formula and the [Schmidt-weight inequality](bkm_geometry.md#the-schmidt-weight-inequality) give
 
 ```math
 \begin{aligned}
-&K_{\rho_R\otimes\sigma}
+&K_{\rho_R\otimes\tau}
  \bigl((\mathrm{id}_R\otimes\Delta)(\psi)\bigr)\\
 &\quad=\sum_{k,l,s,t}
  p_kp_l h(p_k\mu_s,p_l\mu_t)
  \left|\bigl[\Delta(|k\rangle\langle l|)\bigr]_{st}\right|^2\\
 &\quad\le\sum_{k,l}\max(p_k,p_l)
- K_\sigma\!\left(\Delta(|k\rangle\langle l|)\right)\\
+ K_\tau\!\left(\Delta(|k\rangle\langle l|)\right)\\
 &\quad=\sum_{j=1}^r\sum_{k,l}
  \max(p_k,p_l)|(H_j)_{lk}|^2.
 \end{aligned}
@@ -171,7 +176,7 @@ The sums over $`k,l`$ run only over the Schmidt subspace. Since $`H_j`$ is Hermi
 &\le\sum_{k,l}(p_k+p_l)|(H_j)_{lk}|^2\\
 &=2\mathrm{Tr}\!\left[\rho_A(PH_jP)^2\right]\\
 &\le2\mathrm{Tr}(\rho_AH_j^2)\\
-&\le2\|H_j\|_\infty^2.
+&\le2\Vert H_j\Vert_\infty^2.
 \end{aligned}
 ```
 
@@ -182,53 +187,68 @@ PH_j^2P-(PH_jP)^2
 =PH_j(I-P)H_jP\ge0.
 ```
 
-Summing over $`j`$ and using $`\|H_j\|_\infty^2\le M`$ proves the lemma. $`\square`$
+Summing over $`j`$ and using $`\Vert H_j\Vert_\infty^2\le M`$ proves the lemma. $`\square`$
 
 The estimate contains neither the input dimension nor an inverse power of a Schmidt coefficient. The factor $`r`$ counts Hermitian directions in the output image, even when the input space supporting those directions is much larger.
 
 ## From the quadratic bound to capacities
 
-For a pure reference/input state, let
+For a pure reference/input state $`\psi`$, set $`\omega=(\mathrm{id}_R\otimes T)(\psi)`$. Its reference marginal is $`\rho_R`$. Restricting to the reference Schmidt support and the common output support makes $`\rho_R\otimes\tau`$ positive definite. The joint state has no blocks outside these supports by positivity and its marginals.
+
+The [extended relative entropy](bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound) permits the generally unnormalized reference operator $`\tau`$. Its chain rule follows by expanding the tensor-product logarithm and the trace correction.
 
 ```math
-\omega_{RB}=(\mathrm{id}_R\otimes T)(\psi).
+D_{\mathrm{ext}}(\omega\Vert\rho_R\otimes\tau)
+=I(R:B)_\omega+D_{\mathrm{ext}}(\omega_B\Vert\tau)
+\ge I(R:B)_\omega.
 ```
 
-Its reference marginal is $`\rho_R`$. Restricting to the reference Schmidt support and the common output support makes $`\rho_R\otimes\sigma`$ positive definite. The joint state has no blocks outside these supports, as follows from positivity and its marginals.
-
-The relative-entropy chain rule gives
+Write $`Y=(\mathrm{id}_R\otimes\Delta)(\psi)`$. The difference from the joint reference is
 
 ```math
-D(\omega_{RB}\|\rho_R\otimes\sigma)
-=I(R:B)_\omega+D(\omega_B\|\sigma).
+\omega-\rho_R\otimes\tau=Y-\eta\rho_R\otimes I_Q.
 ```
 
-Apply the [quadratic upper bound for relative entropy](bkm_geometry.md#relative-entropy-and-its-quadratic-upper-bound), followed by Lemmas 3 and 2:
+The last term is diagonal in the product eigenbasis of $`\rho_R`$ and $`\tau`$. With reference eigenvalues $`p_k`$ and output eigenvalues $`\mu_s`$, its BKM square is
+
+```math
+K_{\rho_R\otimes\tau}(\eta\rho_R\otimes I_Q)
+=\eta^2\sum_{k,s}\frac{p_k^2}{p_k\mu_s}
+=\eta^2\mathrm{Tr}(\tau^{-1})\le b\eta,
+```
+
+since $`\mu_s\ge\eta`$. Lemma 3 bounds the square of the other term by $`2rM`$. Apply the quadratic upper bound for extended relative entropy and the triangle inequality for the BKM norm. Lemma 2 then gives
 
 ```math
 \begin{aligned}
 I(R:B)_\omega
-&\le D(\omega_{RB}\|\rho_R\otimes\sigma)\\
-&\le K_{\rho_R\otimes\sigma}
-       (\omega_{RB}-\rho_R\otimes\sigma)\\
-&=K_{\rho_R\otimes\sigma}
-       \bigl((\mathrm{id}_R\otimes\Delta)(\psi)\bigr)\\
-&\le2rM\\
-&\le16br\,\chi(T).
+&\le K_{\rho_R\otimes\tau}(Y-\eta\rho_R\otimes I_Q)\\
+&\le \bigl(\sqrt{2rM}+\sqrt{b\eta}\bigr)^2\\
+&\le\left(2\sqrt{(e-1)r}+\sqrt b\right)^2\eta.
 \end{aligned}
 ```
 
-The [BSST entanglement-assisted capacity theorem](../references/RELATED_WORK.md#bsst2002) maximizes $`I(R:B)_\omega`$ over purifications of arbitrary input density matrices. Thus the pure joint-state calculation already covers mixed channel inputs and proves the first capacity inequality.
+The [BSST entanglement-assisted capacity theorem](../references/RELATED_WORK.md#bsst2002) maximizes $`I(R:B)_\omega`$ over purifications of arbitrary input density matrices. This proves the assisted-capacity inequality. The coding results of [Holevo](../references/RELATED_WORK.md#holevo1998) and [Schumacher–Westmoreland](../references/RELATED_WORK.md#schumacher1997) give $`\chi(T)\le C(T)`$ for the regularized ordinary capacity.
 
-Every translated output is traceless Hermitian on a $`b`$-dimensional space, so $`r\le b^2-1`$. Finally, [Holevo](../references/RELATED_WORK.md#holevo1998) and [Schumacher–Westmoreland](../references/RELATED_WORK.md#schumacher1997) establish achievability of the single-use Holevo quantity, giving $`C(T)\ge\chi(T)`$. No single-letter formula for the ordinary classical capacity is assumed. These facts complete the theorem. $`\square`$
+If $`r=0`$, the image consists of a single state $`\sigma`$. Density matrices span the Hermitian input space, so $`T=R_\sigma`$ on all inputs and both capacities are zero. This case includes $`b=1`$. Every translated output is traceless Hermitian on $`Q`$, giving $`r\le b^2-1`$. For commuting outputs it is traceless diagonal in one common basis, giving $`r\le b-1`$. $`\square`$
 
-When $`r=0`$, the image consists of one state. Since density matrices span the Hermitian input space, $`T=R_\sigma`$ on all inputs, and the zero-capacity case follows directly. If $`b=1`$, this replacement case is automatic.
+## The maximum-determinant bound
+
+The original estimate $`C_E(T)\le16br\,\chi(T)`$ can give a smaller coefficient at low output dimension. Use as center a state $`\sigma_{\det}\in S`$ maximizing $`\ln\det`$ on $`Q`$. A determinant maximizer exists by compactness and is positive definite because the image contains $`T(I_A/\dim A)`$. For any $`x\in S`$, the one-sided derivative along the segment toward $`x`$ gives
+
+```math
+\mathrm{Tr}[\sigma_{\det}^{-1}(x-\sigma_{\det})]\le0,
+\qquad
+\mathrm{Tr}(\sigma_{\det}^{-1}x)\le b.
+```
+
+The largest eigenvalue of the positive matrix $`\sigma_{\det}^{-1/2}x\sigma_{\det}^{-1/2}`$ is at most its trace, so $`x\le b\sigma_{\det}`$. The [binary segment bound](bkm_geometry.md#a-segment-bound-for-binary-holevo-information) gives a radius of at most $`8b\chi(T)`$ in $`K_{\sigma_{\det}}`$. In Lemma 3 use $`\sigma_{\det}`$ as the replacer state and the metric reference. The joint quadratic form at $`\rho_R\otimes\sigma_{\det}`$ is at most $`16br\,\chi(T)`$. The relative-entropy chain rule and capacity maximization then give the estimate.
 
 ## What the bound establishes
 
-For channels with positive ordinary capacity, the theorem uniformly bounds the ratio $`C_E(T)/C(T)`$ at fixed output dimension. A family whose ratios tend to infinity must therefore have effective output dimensions tending to infinity.
+The upper argument counts the affine directions available to the channel output, even though the input space and the receiver's preshared entanglement may grow much faster. The [matching families](sharp_examples.md) establish the worst-case quadratic dimension order and its linear counterpart for commuting outputs.
 
-[Wolff et al.](../references/RELATED_WORK.md#wolff2025) give a uniform bound in terms of input dimension and explicitly ask whether an output-dimension bound exists. Their BKM and Schmidt-coefficient tools are used here. The additional channel-image argument chooses a dominating state inside the image and controls the complete quadratic form through Hermitian output coordinates. This yields the receiver-side uniformity proved above, including limits in which the output spectrum approaches a lower-rank state. Further comparisons are in [related work](../references/RELATED_WORK.md).
+[Wolff et al.](../references/RELATED_WORK.md#wolff2025) give a uniform input-dimension bound and explicitly ask whether an output-dimension bound exists. Their BKM and Schmidt-weight tools enter the amplification estimate here. The regularized Holevo center keeps the curvature constant independent of the output dimension. Charging its floor in the joint reference gives the stated receiver-side bound even as the output approaches a lower-rank state. [Further comparisons](../references/RELATED_WORK.md)
 
 ## Continue
 

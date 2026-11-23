@@ -6,42 +6,35 @@ Machine-readable records for every source below are in [references.bib](referenc
 
 ## Position of the result
 
-For a channel $`T`$ whose state image has real affine dimension $`r`$, the result proved here is
+For a channel $`T`$ whose output-state image has real affine dimension $`r`$ and effective support dimension $`b`$, the [main proof](../science/output_bound.md) gives
 
 ```math
-C_E(T)\le 16br\,\chi(T)
-\le16b(b^2-1)\chi(T)
-\le16b(b^2-1)C(T).
+C_E(T)\le \bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2\,\chi(T).
 ```
 
-The constant is uniform over all finite input dimensions and all nonzero output eigenvalues. When $`r=0`$, the channel is a replacer and all three information quantities vanish. Stating the result as an inequality avoids assigning a ratio to a zero-capacity channel.
+The [measure-and-prepare family](../science/sharp_examples.md) approaches ratio $`b^2-1`$ at fixed $`b`$. These results give the sharp quadratic order of the largest gain, uniformly over finite input dimensions and output spectra.
 
-The closest preceding results address two different parts of this problem:
-
-| Result | Dependence of the bound | Relation to the present theorem |
+| Result | Dependence of the bound | Relation to this project |
 |---|---|---|
-| [Wolff et al. (2025)](#wolff2025) | Input dimension; asymptotically $`8d_A^2/\ln d_A`$. Their proof also bounds $`C_E/\chi`$. | Establishes a uniform finite-input bound and explicitly leaves output-only boundedness open. |
-| [Belzig (2023), Theorem 4.4.2](#belzig2023) | Near the associated replacer, $`4\ln(2)d_B^5/\lambda_{\min}(\sigma_*)`$, where $`\sigma_*`$ is the output divergence center. | Gives an output-dimension estimate with a conditioning factor. Section 4.5 identifies rank-changing limits as unresolved. |
-| Present theorem | Effective output dimension and affine image dimension: $`16br`$. | Removes both input-dimension and inverse-eigenvalue dependence. |
+| [Wolff et al. (2025)](#wolff2025) | Input dimension, asymptotically $`8d_A^2/\ln d_A`$. The proof also bounds $`C_E/\chi`$. | Asks whether an output-only bound exists. |
+| [Belzig (2023), Theorem 4.4.2](#belzig2023) | Near the associated replacer, $`4\ln(2)d_B^5/\lambda_{\min}(\sigma_*)`$. | Retains the least eigenvalue of the output divergence center. |
+| Present theorem | Effective output support and affine image dimension. | Gives the sharp quadratic order in the output dimension, including rank-changing limits. |
 
-This is a uniformity result, rather than an optimal enhancement factor. For square channels, existing input-dimension or special-family bounds can be substantially stronger numerically. The distinction is that an arbitrarily large finite input space cannot produce an unbounded gain while the effective channel-output dimension stays fixed.
+[Chitambar et al.](#chitambar2023) study a one-use guessing score called communication value. Its output-dimension bounds pertain to that score. The capacities here concern reliable transmission over arbitrarily many independent uses.
 
 ## Inherited tools and the uniform step
 
-The capacity formulas and the relative-entropy geometry are established ingredients:
+The [Bennett–Shor–Smolin–Thapliyal theorem](#bsst2002) identifies $`C_E(T)`$ with a maximum over reference–output mutual information. The coding theorems of [Schumacher–Westmoreland](#schumacher1997) and [Holevo](#holevo1998) supply $`\chi(T)\le C(T)`$. [Gao–Rouzé](#gaorouze2022) and [Wolff et al.](#wolff2025) provide the relative-entropy and BKM estimates used in the argument.
 
-- The [Bennett–Shor–Smolin–Thapliyal theorem](#bsst2002) identifies $`C_E(T)`$ with the maximum reference–output mutual information over purifications of channel inputs.
-- The coding theorems of [Schumacher–Westmoreland](#schumacher1997) and [Holevo](#holevo1998) supply $`\chi(T)\le C(T)`$. No additivity of $`\chi`$ is assumed. The accessible-information Holevo bound alone would not supply this achievability statement.
-- [Gao–Rouzé](#gaorouze2022), Lemmas 2.1–2.2, establish the BKM quadratic-form comparisons used here. [Wolff et al.](#wolff2025), equations (6)–(9) and Appendix (21), present the relative-entropy upper bound, eigenbasis weights, and segment integral in the capacity-ratio setting.
-- The derivative of $`\log\det`$, Hermitian spectral bounds, and Parseval's identity are standard finite-dimensional tools. The relative-entropy decomposition into mutual information and a marginal divergence follows directly from the tensor-product logarithm.
+The proof starts with the mean of an optimal Holevo ensemble and uses its relative-entropy radius. A binary divergence inequality controls the whole output image by a constant multiple of that state plus $`\chi(T)I`$. Comparing relative entropy along the image segment then bounds its BKM radius. The BKM amplification still resolves only the $`r`$ active output directions. An explicit trace correction accounts for the added identity.
 
-The uniform step in this proof combines an in-image maximum-determinant state with an amplification estimate indexed by the output image. The maximizing state $`\sigma`$ satisfies $`x\le b\sigma`$ for every output state $`x`$. The BKM curvature of a feasible binary ensemble then bounds the output-image metric radius by $`8b\chi(T)`$. Finally, a BKM-orthonormal Hermitian basis of the translated image bounds the joint reference–output quadratic form by $`2r`$ times that radius. This combination remains controlled when the smallest eigenvalue of $`\sigma`$ tends to zero. A separate information-radius center theorem is not required.
+The lower example uses anticommuting Hermitian unitaries to keep the output coefficient vector of every unassisted input in a Euclidean unit ball. A maximally entangled input contributes all output directions to the leading squared joint norm. [Shor's theorem](#shor2002) identifies the unassisted capacity of this measure-and-prepare channel with its single-use Holevo quantity. The [spin-unitary background](#farenick2021) supplies the operator geometry.
 
 ## Established benchmark channels
 
-The depolarizing capacity formulas are inherited from [Holevo](#holevo2002) and [King](#king2003). King's additivity theorem identifies the single-use Holevo quantity with the full unassisted classical capacity throughout the complete-positivity range. At fixed dimension, the gain approaches $`b+1`$ as the channel approaches the completely depolarizing replacer. At the negative complete-positivity boundary, the gain grows as $`2b(1+o(1))`$ with dimension. Thus any universal output-only factor must grow at least linearly; the cubic bound here does not resolve the optimal scaling.
+[Holevo](#holevo2002) and [King](#king2003) give the depolarizing capacity formulas. At fixed dimension, the gain tends to $`b+1`$ as the signal vanishes. At the negative complete-positivity boundary, the gain grows as $`2b(1+o(1))`$. These families give useful exact benchmarks at comparable input and output dimensions.
 
-The worked measurement example uses [Shor's additivity theorem](#shor2002) for entanglement-breaking channels and [Holevo's measurement-channel capacity formula](#holevo2012). A rank-one trine measurement has $`C_E=1`$ and $`C=\log_2 3-1`$. This is consistent with the fact that classical output alone does not imply equality of assisted and unassisted capacities: a measurement with noncommuting effects is more general than an ordinary classical channel embedded in fixed input and output bases.
+The worked trine example uses [Shor's additivity theorem](#shor2002) and [Holevo's measurement-channel formula](#holevo2012). A rank-one trine measurement has $`C_E=1`$ and $`C=\log_2 3-1`$.
 
 ## Primary sources
 
@@ -59,7 +52,7 @@ Relevant locations in [version 3](https://arxiv.org/html/2408.17290v3): Section 
 
 Paula Belzig, *Quantum communication and fault-tolerance*, PhD thesis, University of Copenhagen (2023). [University manuscript](https://noter.math.ku.dk/phd23pb.pdf). [arXiv:2412.20736](https://arxiv.org/abs/2412.20736), posted in 2024.
 
-Relevant locations: Chapter 4, especially Theorem 4.4.2, printed pages 129–130, and Section 4.5, printed pages 131–132. The near-replacer theorem assumes $`\|T-R_{\sigma_*}\|_{1\to1}\le1/(2d_B)`$ and retains $`\lambda_{\min}(\sigma_*)^{-1}`$. The thesis was submitted and defended in 2023; the later arXiv posting does not change that thesis date.
+Relevant locations: Chapter 4, especially Theorem 4.4.2, printed pages 129–130, and Section 4.5, printed pages 131–132. The near-replacer theorem assumes $`\Vert T-R_{\sigma_*}\Vert_{1\to1}\le1/(2d_B)`$ and retains $`\lambda_{\min}(\sigma_*)^{-1}`$. The thesis was submitted and defended in 2023; the later arXiv posting does not change that thesis date.
 
 <a id="gaorouze2022"></a>
 
@@ -115,7 +108,7 @@ Relevant locations: equations (23)–(26) and the subsequent discussion of the t
 
 Peter W. Shor, “Additivity of the Classical Capacity of Entanglement-Breaking Quantum Channels,” *Journal of Mathematical Physics* **43**(9), 4334–4340 (2002). [DOI: 10.1063/1.1498000](https://doi.org/10.1063/1.1498000). [arXiv:quant-ph/0201149](https://arxiv.org/abs/quant-ph/0201149).
 
-This supplies $`C=\chi`$ for the trine measurement example. It does not imply $`C_E=C`$ for entanglement-breaking channels.
+This supplies $`C=\chi`$ for the trine measurement and the Clifford measure-and-prepare examples.
 
 <a id="holevo2012"></a>
 
@@ -124,3 +117,15 @@ This supplies $`C=\chi`$ for the trine measurement example. It does not imply $`
 Alexander S. Holevo, “Information Capacity of a Quantum Observable,” *Problems of Information Transmission* **48**(1), 1–10 (2012). [DOI: 10.1134/S0032946012010012](https://doi.org/10.1134/S0032946012010012). [arXiv:1103.2615](https://arxiv.org/abs/1103.2615).
 
 Relevant locations: Section 2 for measurement-channel capacities and Section 3, equation (9), for the entanglement-assisted capacity of rank-one measurements.
+
+<a id="chitambar2023"></a>
+
+### Chitambar et al. — Communication value
+
+Eric Chitambar, Ian George, Brian Doolittle, and Marius Junge, “The Communication Value of a Quantum Channel,” *IEEE Transactions on Information Theory* **69**, 1660–1679 (2023). Section VI studies assistance for the one-use guessing score. [arXiv:2109.11144](https://arxiv.org/abs/2109.11144).
+
+<a id="farenick2021"></a>
+
+### Farenick et al. — Spin unitaries
+
+Douglas Farenick, Farrah Huntinghawk, Adili Masanika, and Sarah Plosker, “Complete Order Equivalence of Spin Unitaries,” *Linear Algebra and its Applications* **610**, 1–28 (2021). The spin-unitary relations are background for the Clifford geometry. [arXiv:2006.06810](https://arxiv.org/abs/2006.06810).

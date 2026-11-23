@@ -1,13 +1,12 @@
 # Scientific account
 
-The central question is whether a fixed channel-output dimension bounds the relative classical communication advantage supplied by unlimited preshared entanglement, uniformly over input dimension and channel conditioning.
+The project determines how the largest entanglement-assisted classical-capacity ratio depends on the effective dimension of the system delivered to the receiver.
 
-Read the account in this order:
+1. [Model and exact claims](model.md) defines the capacities, the effective output support, and the affine dimension of the image.
+2. [BKM geometry](bkm_geometry.md) develops the quadratic form and its relation to relative entropy.
+3. [Output-dimension bound](output_bound.md) combines an information-radius center, an entropy comparison, and an amplification estimate over the output image.
+4. [Weak-signal channels and commuting outputs](sharp_examples.md) proves the matching quadratic lower order and the distinct linear order for commuting outputs.
+5. [Worked channel comparisons](examples.md) compares established channels, the two depolarizing limits, and input padding.
+6. [Interpretation](interpretation.md) explains what the scaling implies and what remains open.
 
-1. [Model and exact claims](model.md): operational capacities, effective support, affine image dimension, and theorem.
-2. [BKM geometry](bkm_geometry.md): the metric, its order properties, and its relation to relative entropy.
-3. [Output-dimension bound](output_bound.md): the dominating image center, binary communication bound, and complete amplification estimate.
-4. [Worked channel comparisons](examples.md): established capacities, two orders of a depolarizing limit, and input padding.
-5. [Interpretation](interpretation.md): the receiver-side constraint and the remaining dimension-scaling gap.
-
-The [related-work account](../references/RELATED_WORK.md) identifies the inherited capacity and geometric tools, the closest earlier bounds, and the consequential difference. The [finite checks](../verification/README.md) test selected calculations; they do not replace the analytical proof.
+The [primary-source comparison](../references/RELATED_WORK.md) records the inherited tools and nearby results. The [finite checks](../verification/README.md) reproduce selected calculations.
