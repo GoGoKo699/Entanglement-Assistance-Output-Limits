@@ -35,8 +35,8 @@ jobs:
           node-version: '22'
       - name: Install the capture runtime
         run: |
-          npm install --prefix "$RUNNER_TEMP/math-runtime" playwright@1.56.1 mathjax-full@3.2.1
-          node "$RUNNER_TEMP/math-runtime/node_modules/playwright/cli.js" install --with-deps chromium
+          timeout 150 npm install --prefix "$RUNNER_TEMP/math-runtime" playwright@1.56.1 mathjax-full@3.2.1
+          timeout 150 node "$RUNNER_TEMP/math-runtime/node_modules/playwright/cli.js" install chromium
       - name: Probe representative inline and display mathematics
         run: |
           export NODE_PATH="$RUNNER_TEMP/math-runtime/node_modules"
