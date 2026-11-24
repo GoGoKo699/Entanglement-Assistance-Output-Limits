@@ -1,24 +1,22 @@
-# Learning the output-dimension bound
+# Learning the input and output dimension bounds
 
-Preshared entanglement can increase the number of classical bits reliably transmitted through a noisy quantum channel. This project determines the worst-case order of that gain. A channel that delivers a system of dimension $`b`$ can have a gain of order $`b^2`$. The same output dimension bounds the gain for every finite input size.
+Preshared entanglement can increase the reliable classical rate through a noisy quantum channel. A channel with effective output dimension $`b`$ can have a gain of order $`b^2`$, and an input dimension of order $`b^2`$ already suffices to realize that order. For $`2\le b\le a`$, where $`a`$ is the input dimension, the worst gain has order $`\min\{a,b^2-1\}`$.
 
-The educational anchor is **Mark M. Wilde, *Quantum Information Theory*, second edition (2017)**, [Cambridge University Press, DOI: 10.1017/9781316809976](https://doi.org/10.1017/9781316809976). Its capacity and entropy framework leads into the project's additional BKM and output-image argument.
+The educational anchor is **Mark M. Wilde, *Quantum Information Theory*, second edition (2017)** ([Cambridge University Press](https://doi.org/10.1017/9781316809976)). Its capacity and entropy framework leads into the project's use of BKM geometry and channel-image dimension.
 
 ## Reading routes
 
 | Goal | Start here |
 |---|---|
-| Connect a familiar communication task to the theorem | [Wilde-to-project bridge](WILDE_BRIDGE.md), including a complete noisy-qubit example |
+| Connect a familiar communication task to the theorems | [Wilde-to-project bridge](WILDE_BRIDGE.md), including a complete noisy-qubit example |
 | Follow the project's conceptual dependencies | [The 30-milestone map](MILESTONES.md) |
 | Check definitions and assumptions | [Communication model](../science/model.md#communication-task) and [effective output dimension](../science/model.md#effective-output-dimension) |
-| Read the analytical argument | [BKM geometry](../science/bkm_geometry.md) and [the output bound](../science/output_bound.md#the-theorem) |
-| Understand sharp examples and remaining limitations | [The sharp-order family](../science/sharp_examples.md) and [benchmark channels](../science/examples.md) |
+| Understand the uniform estimates | [BKM geometry](../science/bkm_geometry.md), [the output bound](../science/output_bound.md#the-theorem), and [joint dimension laws](../science/joint-dimensions.md) |
+| Compare a small sender with exact saturation | [Joint dimension laws](../science/joint-dimensions.md) and [the Clifford family](../science/sharp_examples.md) |
 | Trace imported theorems and the contribution | [Related work and primary sources](../references/RELATED_WORK.md) |
 
 ## How the map fits the science
 
-The map has two phases. [M01–M14](MILESTONES.md#background-preliminaries) build from states and channels through correlations, coding rates, and output geometry to the uniform-comparison problem. [M15–M30](MILESTONES.md#narrative-innovation) derive a regularized Holevo-radius estimate and the complete amplification bound, then show how a family of measure-and-prepare channels matches the output-dimension exponent.
+[Milestones M01–M14](MILESTONES.md#background-preliminaries) build from states and channels through correlations, coding rates, and output geometry to the uniform-comparison problem. [Milestones M15–M30](MILESTONES.md#narrative-innovation) derive the regularized Holevo-radius estimate, compare two ways to count the joint perturbation, and follow the constructions from order-sharp gain to exact local saturation.
 
-The allocation follows the argument: fourteen targets establish a common framework, and sixteen explain the mechanism and its consequences. Each milestone records a central question, an understanding target, dependencies, a conceptual connection, and source pointers.
-
-The bridge translates notation and units, identifies the relevant sections of the **printed 2017 edition**, and explains the additional research-level steps. Wilde is the single pedagogical anchor; the primary papers remain the sources for imported results and scientific attribution. The canonical statements and full proofs are in [science/](../science/README.md).
+The bridge identifies the relevant sections of the printed 2017 edition and translates notation and units. Wilde supplies the single pedagogical anchor. The primary papers support attribution for imported results, and the [scientific account](../science/README.md) gives the canonical statements and full proofs.

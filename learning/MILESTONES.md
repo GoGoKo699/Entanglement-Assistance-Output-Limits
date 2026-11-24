@@ -1,10 +1,10 @@
-# Thirty milestones for the output-dimension bound
+# Thirty milestones for the input and output dimension laws
 
-[Learning route](README.md) · [Wilde bridge](WILDE_BRIDGE.md) · [Scientific account](../science/README.md) · [Exact theorem](../science/model.md#uniform-output-bound)
+[Learning route](README.md) · [Wilde bridge](WILDE_BRIDGE.md) · [Scientific account](../science/README.md) · [Output bound](../science/model.md#uniform-output-bound) · [Joint dimension laws](../science/joint-dimensions.md)
 
-The scientific question is whether unlimited preshared entanglement can produce an unbounded relative advantage for classical communication when each channel use delivers a system of fixed dimension. This map follows the objects, operational quantities and geometric mechanism needed to understand the sharp output-dimension law.
+The scientific question is how the input and effective output dimensions control the gain in classical communication from unlimited preshared entanglement. This map follows the operational quantities, geometric estimates and channel examples that determine the sharp dimension laws.
 
-The map has **14 background/preliminaries milestones, M01–M14, and 16 narrative/innovation milestones, M15–M30**. The background joins two foundations: channel capacities describe the communication task, while spectrum-dependent matrix geometry supplies the comparison tool. Its final milestone combines them into the precise comparison addressed by the proof. The narrative regularizes an achievable Holevo-radius center, carries the resulting bound through reference–output correlations, and constructs a family that forces the quadratic growth. The allocation follows these two connected parts of this project.
+The map has **14 background/preliminaries milestones, M01–M14, and 16 narrative/innovation milestones, M15–M30**. The background joins two foundations: channel capacities describe the communication task, while spectrum-dependent matrix geometry supplies the comparison tool. Its final milestone combines them into the precise comparison addressed by the proof. The narrative regularizes an achievable Holevo-radius center, carries the resulting bound through reference–output correlations, and explains why the dimensions needed for matching growth can be much smaller than those needed for exact saturation.
 
 The single educational anchor is **Wilde2017**: Mark M. Wilde, *Quantum Information Theory*, second edition (2017). The [source bridge](WILDE_BRIDGE.md) gives the edition, access links, notation translation and the relevant sections: §11.6, §11.8, §§13.3–13.4, §20.3 and §21.3. Section references below always mean that edition. The book supplies the information-theoretic foundations; the local scientific pages supply the output-image construction and its derivation. Research sources cited below are primary proof dependencies or comparison results, not additional educational anchors.
 
@@ -162,19 +162,19 @@ The route moves from a single transmitted state to joint systems, information me
 
 <a id="m10"></a>
 
-### M10 — Two different dimensions of the output
+### M10 — Input size, output support and affine image
 
 **ID and phase:** M10 · background/preliminaries.
 
-**Central question:** What do the effective output dimension $`b`$ and the affine image dimension $`r`$ each count?
+**Central question:** What do the input dimension $`a`$, effective output dimension $`b`$, and affine image dimension $`r`$ each count?
 
-**Understanding target:** Explain why all outputs are supported on $`\mathrm{supp}T(I_A)`$ and why the image contains a state positive on that support. Distinguish this support dimension from the number of real independent output variations, with $`r\le b^2-1`$. Keep both distinct from the input dimension and the receiver's entanglement register.
+**Understanding target:** Explain why all outputs lie on $`\mathrm{supp}T(I_A)`$ and why the image contains a state positive on that support. Distinguish the support dimension from the number of independent real output variations, with $`r\le b^2-1`$. Relate the input dimension to the Schmidt rank of a pure reference–input state.
 
-**Dependencies and story role:** M02, M03. The operational setting is connected to the two geometric parameters appearing in the theorem.
+**Dependencies and story role:** M02, M03, M04. The operational setting is connected to the dimensions appearing in the theorems.
 
-**Conceptual connection:** Removing inactive output dimensions makes the statement intrinsic to the channel; counting affine directions will remove input dimension from amplification.
+**Conceptual connection:** The output count can remain small even when the occupied input and reference spaces are large.
 
-**Source pointers:** [Effective output dimension and affine span](../science/model.md#effective-output-dimension); [Receiver-side constraint](../science/interpretation.md#quantum-and-commuting-outputs).
+**Source pointers:** [Effective output dimension and affine span](../science/model.md#effective-output-dimension), [joint dimension laws](../science/joint-dimensions.md).
 
 <a id="m11"></a>
 
@@ -230,21 +230,21 @@ The route moves from a single transmitted state to joint systems, information me
 
 **ID and phase:** M14 · background/preliminaries.
 
-**Central question:** Why do familiar capacity and dimension bounds leave the fixed-output enhancement question open?
+**Central question:** Why do separate capacity bounds leave the dimension dependence of their ratio open?
 
-**Understanding target:** Assemble the two capacity formulas and the output geometry into the goal $`C_E(T)\le f(b)\chi(T)`$. Explain why an absolute bound on $`C_E`$ does not control its ratio to a capacity approaching zero, and why an inverse-eigenvalue factor fails to give uniform control near rank loss.
+**Understanding target:** Use the two capacity formulas and output geometry to formulate a comparison $`C_E(T)\le f(a,b,r)\chi(T)`$. Explain why the multiplier must stay controlled when the ordinary capacity and the nonzero eigenvalues in the output spectrum become small. Identify the output-only estimate as one requirement and the simultaneous input and output constraint as another.
 
-**Dependencies and story role:** M07, M08, M09, M10, M13. This synthesizes the background into the exact comparison that the new argument must supply.
+**Dependencies and story role:** M07, M08, M09, M10, M13. This synthesizes the background into the comparison addressed by the uniform proof.
 
-**Conceptual connection:** A successful proof must use output dimension alone while allowing arbitrarily large finite input spaces, arbitrarily small positive capacities and arbitrarily small nonzero output eigenvalues.
+**Conceptual connection:** A small capacity can be divided out only after bounding the assisted capacity proportionally to it.
 
-**Source pointers:** [Why proximity to a replacer matters](../science/interpretation.md#why-proximity-to-a-replacer-matters); [Prior bounds and their distinction](../references/RELATED_WORK.md#position-of-the-result); [Wolff et al.](../references/RELATED_WORK.md#wolff2025), Section IV; [Belzig](../references/RELATED_WORK.md#belzig2023), Theorem 4.4.2 and Section 4.5.
+**Source pointers:** [Why proximity to a replacer matters](../science/interpretation.md#why-proximity-to-a-replacer-matters), [prior bounds](../references/RELATED_WORK.md#position-of-the-result), [joint dimension laws](../science/joint-dimensions.md).
 
 <a id="narrative-innovation"></a>
 
 ## Phase 2: Narrative/innovation
 
-The argument begins with one channel’s achievable outputs. It uses their Holevo-radius center to obtain a spectrum-sensitive norm estimate, then counts the output directions available for correlations with a reference. A family of measure-and-prepare channels shows how large that amplification can be.
+The argument begins with one channel’s achievable outputs. Its Holevo-radius center gives a spectrum-sensitive estimate that can be applied to both output coordinates and input Schmidt blocks. Weak-signal channels show how large the gain can be and how the input cost changes at exact saturation.
 
 <a id="m15"></a>
 
@@ -354,50 +354,39 @@ PH_j^2P-(PH_jP)^2
 
 <a id="m21"></a>
 
-### M21 — Complete amplification is controlled by output directions
+### M21 — Two counts control the same joint perturbation
 
 **ID and phase:** M21 · narrative/innovation.
 
-**Central question:** What remains after the Schmidt sums and Hermitian moments are bounded?
+**Central question:** How do output coordinates and input Schmidt blocks give different estimates?
 
-**Understanding target:** Combine the spectral-weight inequality, support compression and individual coefficient bounds to obtain
+**Understanding target:** Use individual output-coordinate bounds to obtain $`2rM`$. Then average equal superpositions of two Schmidt vectors over their relative phase to bound the squared output BKM norm of each off-diagonal block by $`2M`$. Sum the block weights to obtain $`(4k-3)M`$ on Schmidt rank $`k`$.
 
-```math
-K_{\rho_R\otimes\tau}
-\bigl((\mathrm{id}_R\otimes\Delta)(\psi)\bigr)
-\le 2rM.
-```
+**Dependencies and story role:** M16, M18, M19, M20. Both estimates control the same joint quadratic form.
 
-Explain why the factor counts real affine output directions and contains neither input dimension nor a spectral cutoff.
+**Conceptual connection:** The smaller count applies with the same reference operator. Output rank can control the bound when the input is large, and occupied input dimension can control it when there are many output directions.
 
-**Dependencies and story role:** M16, M18, M19, M20. This assembles the local coordinate estimates into the joint-system bound required by the theorem.
-
-**Conceptual connection:** The input register can grow while the number of output directions stays fixed; this is the mechanism behind uniformity in input dimension.
-
-**Source pointers:** [Complete amplification](../science/output_bound.md#complete-amplification-through-output-coordinates); [Role of affine dimension](../science/interpretation.md).
+**Source pointers:** [Output-coordinate amplification](../science/output_bound.md#complete-amplification-through-output-coordinates), [Schmidt block estimate](../science/joint-dimensions.md).
 
 <a id="m22"></a>
 
-### M22 — Account for the floor and recover the capacity bound
+### M22 — Account for the floor and recover the capacity bounds
 
 **ID and phase:** M22 · narrative/innovation.
 
 **Central question:** What does it cost to compare the joint output with the product operator $`\rho_R\otimes\tau`$?
 
-**Understanding target:** Apply the relative-entropy upper bound for a positive reference operator with arbitrary trace. Explain why the marginal divergence is nonnegative and why the BKM squared norm of the shift $`\eta\rho_R\otimes I_B`$ is $`\eta^2\mathrm{Tr}\,\tau^{-1}\le b\eta`$. Use the BKM norm triangle inequality to combine this cost with M21, and then apply BSST and HSW to obtain
+**Understanding target:** Apply the relative-entropy upper bound for a positive reference operator of arbitrary trace. Explain why the marginal divergence is nonnegative and why the floor shift has squared BKM norm at most $`b\chi(T)`$. Combine the costs with M21 through the BKM triangle inequality, then use BSST and HSW to obtain the uniform multiplier.
 
 ```math
-C_E(T)\le
-\bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2\chi(T)
-\le
-\bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2 C(T).
+\left(\sqrt{2(e-1)\min\{2r,4a-3\}}+\sqrt b\right)^2.
 ```
 
-**Dependencies and story role:** M06, M08, M09, M13, M16, M21. This integrates the complete quadratic estimate and the regularization cost with both capacity formulas.
+**Dependencies and story role:** M06, M08, M09, M13, M16, M21. This integrates the joint quadratic estimates and the regularization cost with both capacity formulas.
 
-**Conceptual connection:** The floor contributes at most $`\chi(T)`$ per output dimension to its squared BKM norm. The larger counting factor comes from the affine output variations in the complete estimate.
+**Conceptual connection:** The floor contributes at most $`\chi(T)`$ per output dimension to its squared BKM norm. The remaining count comes from either the affine output coordinates or the occupied input directions.
 
-**Source pointers:** [Passage from the quadratic bound to capacities](../science/output_bound.md#from-the-quadratic-bound-to-capacities); Wilde2017 §§20.3 and 21.3; [BSST](../references/RELATED_WORK.md#bsst2002), [Holevo](../references/RELATED_WORK.md#holevo1998) and [Schumacher–Westmoreland](../references/RELATED_WORK.md#schumacher1997).
+**Source pointers:** [Passage from the quadratic bound to capacities](../science/output_bound.md#from-the-quadratic-bound-to-capacities), [joint dimension bound](../science/joint-dimensions.md), Wilde2017 §§20.3 and 21.3.
 
 <a id="m23"></a>
 
@@ -437,15 +426,15 @@ C_E(T)\le
 
 **ID and phase:** M25 · narrative/innovation.
 
-**Central question:** Why is an output-only bound a different statement from an input-dimension bound?
+**Central question:** Why do separate input and output counts describe different channel restrictions?
 
-**Understanding target:** Explain how appending an input register that the channel discards enlarges the input dimension while preserving its state image and both capacities. Use simulations by local preprocessing in each direction to justify this equality for arbitrary block codes, including entanglement-assisted codes.
+**Understanding target:** Explain how appending an input register that the channel discards enlarges $`a`$ while preserving the state image and both capacities. Use local preprocessing in both directions to justify the equality for arbitrary block codes, including entanglement-assisted codes.
 
-**Dependencies and story role:** M03, M08, M09, M22. A concrete invariance connects the theorem's mathematical uniformity to the physical communication task.
+**Dependencies and story role:** M03, M08, M09, M22. A concrete invariance connects the uniform theorem to the communication task.
 
-**Conceptual connection:** A device's description can acquire extra input dimensions without acquiring a new communication resource; the output-image estimate is unchanged by that enlargement.
+**Conceptual connection:** The output-image estimate survives input padding. With actual input dimension constrained, the Schmidt-block estimate can supply a smaller upper bound.
 
-**Source pointers:** [Input-padding construction](../science/examples.md#4-input-padding-leaves-the-communication-problem-unchanged); [Comparison with earlier bounds](../science/interpretation.md).
+**Source pointers:** [Input-padding construction](../science/examples.md#4-input-padding-leaves-the-communication-problem-unchanged), [joint dimension laws](../science/joint-dimensions.md).
 
 <a id="m26"></a>
 
@@ -465,35 +454,35 @@ C_E(T)\le
 
 <a id="m27"></a>
 
-### M27 — Anticommuting measurements force quadratic growth
+### M27 — Matching weak-signal constructions and exact saturation
 
 **ID and phase:** M27 · narrative/innovation.
 
-**Central question:** How can a channel that measures and prepares states exhibit a quadratic entanglement-assisted gain?
+**Central question:** Which input resources give the sharp order, and which give equality in the local affine-dimension bound?
 
-**Understanding target:** Explain why a collection of anticommuting observables confines all ordinary output displacements to the same Euclidean ball. Use the entropy expansion around the maximally mixed output and Shor’s additivity for entanglement-breaking channels to control $`C=\chi`$. For one maximally entangled input, explain why the corresponding joint displacement accumulates a contribution from each of the $`b^2-1`$ output directions. Relate the same construction on diagonal output matrices to the matching linear order for commuting outputs.
+**Understanding target:** Explain how a full-rank replacer makes both capacities quadratic in signal strength and how a maximally entangled input accumulates orthogonal reference correlations. Compare the bounded ordinary image radius of the traceless Gaussian observables with that of the Clifford family. Use Shor’s additivity to identify $`C=\chi`$ for these channels. At the maximally mixed replacer, explain why exact saturation of the local $`r`$ bound for $`r\ge2`$ forces Clifford observables on the occupied support.
 
-**Dependencies and story role:** M07, M09, M10, M24, M26. This supplies a family that matches the upper-bound exponent.
+**Dependencies and story role:** M07, M09, M10, M24, M26. The constructions and the equality argument give two different dimension requirements.
 
-**Conceptual connection:** For an ordinary input the observable coefficients obey one squared-norm budget. Reference correlations can occupy all the orthogonal directions at once. The diagonal restriction allows only $`b-1`$ such directions.
+**Conceptual connection:** A sender of dimension proportional to $`b^2`$ suffices for quadratic growth. Exact local saturation with $`r`$ active directions requires Schmidt rank at least $`2^{\lfloor r/2\rfloor}`$.
 
-**Source pointers:** [Clifford measure-and-prepare families](../science/sharp_examples.md); [Shor’s additivity theorem](../references/RELATED_WORK.md#shor2002).
+**Source pointers:** [Local law and saturation](../science/joint-dimensions.md), [Clifford and commuting families](../science/sharp_examples.md), [Shor’s additivity theorem](../references/RELATED_WORK.md#shor2002).
 
 <a id="m28"></a>
 
-### M28 — What is inherited and what the uniform argument adds
+### M28 — Inherited tools and the new dimension law
 
 **ID and phase:** M28 · narrative/innovation.
 
-**Central question:** Which gap does the theorem close relative to the closest earlier results?
+**Central question:** Which gap closes relative to the earlier input and output estimates?
 
-**Understanding target:** Distinguish the earlier uniform input-dimension bound from the earlier output estimate with a channel-dependent spectral factor. Attribute the capacity formulas, BKM comparisons and Schmidt-weight inequality to their sources. Identify how the regularized information radius sharpens the earlier upper bound and how the Clifford family establishes the order of the best output-only bound.
+**Understanding target:** Attribute the capacity formulas, BKM comparisons, and input-block estimates to their sources. Explain how one regularized output reference makes both amplification counts usable without spectral conditioning. Identify the matching lower construction that turns the combined bound into a sharp order for $`b\le a`$.
 
-**Dependencies and story role:** M14, M15, M16, M21, M22, M25, M27. The completed result is positioned within the established mathematical and communication framework.
+**Dependencies and story role:** M14, M15, M16, M21, M22, M25, M27. The result is placed within the established communication and mathematical framework.
 
-**Conceptual connection:** Removing input and conditioning dependence is consequential even when older bounds are numerically stronger for square channels or special families.
+**Conceptual connection:** The matching law concerns a simultaneous restriction on the channel’s input and output dimensions. The output-only bound still applies when the input can grow arbitrarily.
 
-**Source pointers:** [Position of the result](../references/RELATED_WORK.md#position-of-the-result); [Inherited tools and the uniform step](../references/RELATED_WORK.md#inherited-tools-and-the-uniform-step); [Wolff et al.](../references/RELATED_WORK.md#wolff2025), [Belzig](../references/RELATED_WORK.md#belzig2023) and [Gao–Rouzé](../references/RELATED_WORK.md#gaorouze2022).
+**Source pointers:** [Position of the result](../references/RELATED_WORK.md#position-of-the-result), [joint dimension laws](../science/joint-dimensions.md), [Wolff et al.](../references/RELATED_WORK.md#wolff2025) and [Belzig](../references/RELATED_WORK.md#belzig2023).
 
 <a id="m29"></a>
 
@@ -501,28 +490,28 @@ C_E(T)\le
 
 **ID and phase:** M29 · narrative/innovation.
 
-**Central question:** How do reproducible calculations support an analytical theorem without replacing its proof?
+**Central question:** How do reproducible calculations support the two analytical dimension laws?
 
-**Understanding target:** Explain the roles of the finite amplification checks, the exact support-compression regression, the regularization floor, the weak-signal Clifford example and the high-precision depolarizing calculations. Distinguish the broader Hermiticity-preserving maps used in the amplification checks from the physical measure-and-prepare channels. Identify which universal claims come from the proof and which algebraic or numerical conventions the checks can expose.
+**Understanding target:** Explain the roles of finite amplification checks, the support-compression regression, the regularization floor, weak-signal calculations, and the exact depolarizing benchmark. Distinguish the Hermiticity-preserving maps in the amplification checks from physical measure-and-prepare channels. Identify which conclusions require the exact proof.
 
-**Dependencies and story role:** M20, M21, M27. The theorem and its examples are connected to their reproducible evidence.
+**Dependencies and story role:** M20, M21, M27. The capacity theorems and matching examples are connected to their reproducible evidence.
 
-**Conceptual connection:** Checking successive inequalities and cancellation-sensitive formulas is useful evidence about implementation; finite sampling does not establish a universal bound, optimality or priority.
+**Conceptual connection:** Finite calculation helps detect a faulty compression identity, coefficient, or limit. The proofs establish bounds over all allowed channel dimensions and spectra.
 
-**Source pointers:** [Verification route](../verification/README.md); [Complete-amplification audit](../verification/README.md#complete-amplification-audit); [Weak-signal and depolarizing checks](../verification/README.md).
+**Source pointers:** [Verification route](../verification/README.md), [complete-amplification audit](../verification/README.md#complete-amplification-audit), [joint dimension laws](../science/joint-dimensions.md).
 
 <a id="m30"></a>
 
-### M30 — The sharp order and the scope of the result
+### M30 — Sharp order, local limit and exact equality
 
 **ID and phase:** M30 · narrative/innovation.
 
-**Central question:** What determines the worst possible entanglement-assisted gain for a fixed output dimension?
+**Central question:** Which statements hold for arbitrary channels, and which use a fixed full-rank replacer?
 
-**Understanding target:** Trace the upper bound from the regularized Holevo radius to the amplification estimate and then to communication rates. Explain why entanglement-breaking examples force order $`b^2`$ for general outputs and order $`b`$ for commuting outputs. State the model with finite-dimensional memoryless channels, arbitrary finite input dimension, unrestricted preshared entanglement, and no uniform spectral cutoff.
+**Understanding target:** Trace the arbitrary-channel bound from the regularized Holevo radius to both amplification counts. Combine it with the weak-signal examples to give the worst-case order $`\min\{a,b^2-1\}`$ when $`b\le a`$. State the matching local law for every aspect ratio with a fixed full-rank replacer. At the maximally mixed replacer, explain the sharper local bound $`\min\{r,k+1\}`$ and what exact saturation at $`r\ge2`$ entails.
 
-**Dependencies and story role:** M22, M23, M24, M27, M28, M29. The final synthesis joins the universal upper bound with the matching families and the unchanged operational assumptions.
+**Dependencies and story role:** M22, M23, M24, M27, M28, M29. The final synthesis separates the regimes and connects each claim to its proof.
 
-**Conceptual connection:** The number of independent output directions controls the exponent of the worst-case gain. The optimal numerical multiplier and the tradeoff with a simultaneous input dimension constraint remain open.
+**Conceptual connection:** The output-only bound holds uniformly and commuting outputs retain linear order in $`b`$. A sharp order for arbitrary signal strengths and arbitrarily large output-to-input dimension ratio remains open.
 
-**Source pointers:** [Exact claims](../science/model.md#uniform-output-bound); [Complete proof](../science/output_bound.md); [Matching families](../science/sharp_examples.md); [Interpretation](../science/interpretation.md).
+**Source pointers:** [Exact output claims](../science/model.md#uniform-output-bound), [global and local joint dimension laws](../science/joint-dimensions.md), [matching examples](../science/sharp_examples.md).

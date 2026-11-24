@@ -1,17 +1,18 @@
 # Entanglement Assistance Output Limits
 
-How much can preshared entanglement increase the classical capacity of a noisy quantum channel? If the channel delivers a system with effective dimension $`b`$, the **largest possible capacity ratio grows as $`\Theta(b^2)`$**, even among entanglement-breaking channels.
+How much can preshared entanglement increase the classical capacity of a noisy quantum channel? For input dimension $`a`$ and effective output dimension $`b`$ with $`2\le b\le a`$, the **largest possible capacity ratio is $`\Theta(\min\{a,b^2-1\})`$**. Measure-and-prepare channels attain this order.
 
-For a finite-dimensional memoryless channel $`T`$, let $`C_E(T)`$ be its classical capacity with unlimited preshared entanglement and $`C(T)`$ its ordinary classical capacity. Writing $`r`$ for the real affine dimension of its output-state image and $`\chi(T)`$ for its single-use Holevo quantity, the universal bound is
+For a finite-dimensional memoryless channel $`T`$, let $`C_E(T)`$ be its classical capacity with unlimited preshared entanglement and $`C(T)`$ its ordinary classical capacity. Write $`r`$ for the real affine dimension of its output-state image and $`\chi(T)`$ for its single-use Holevo quantity. The [joint-dimension bound](science/joint-dimensions.md) is
 
 ```math
-C_E(T)\le \bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2\,\chi(T),
-\qquad r\le b^2-1,\qquad \chi(T)\le C(T).
+\begin{aligned}
+C_E(T)&\le
+\left(\sqrt{2(e-1)\min\{2r,4a-3\}}+\sqrt b\right)^2\,\chi(T),\\
+r&\le b^2-1,\qquad \chi(T)\le C(T).
+\end{aligned}
 ```
 
-The [proof](science/output_bound.md) regularizes a center of the output image by an amount proportional to its Holevo information. The bound stays uniform as ordinary capacity approaches zero or output eigenvalues approach zero. It is independent of input dimension.
-
-An explicit [measure-and-prepare family](science/sharp_examples.md) approaches the ratio $`b^2-1`$ with a weak signal. Its input observables encode $`b^2-1`$ distinct output directions. When all output states commute, the worst-case gain instead grows as $`\Theta(b)`$.
+The bound is uniform through arbitrarily small ordinary capacities and output eigenvalues. The same sharp order holds for every aspect ratio in the weak-signal limit about a fixed full-rank replacer. A Gaussian-observable construction reaches the quadratic order with $`a=\Theta(b^2)`$. The [Clifford family](science/sharp_examples.md) reaches the exact limiting ratio $`b^2-1`$. At a maximally mixed replacer, exact saturation of the affine-dimension bound requires Schmidt support exponential in the number of directions. When all output states commute, the worst-case gain with unrestricted input dimension grows linearly in $`b`$.
 
 ## Read the science
 
@@ -19,8 +20,9 @@ An explicit [measure-and-prepare family](science/sharp_examples.md) approaches t
 |---|---|
 | Which capacities, dimensions and resources are being compared? | [Model and exact claims](science/model.md) |
 | Which relative-entropy tools enter the proof? | [BKM geometry](science/bkm_geometry.md) |
+| How do the input and output jointly constrain the ratio? | [Joint-dimension law](science/joint-dimensions.md) |
 | How does output geometry control entangled inputs? | [Output-dimension bound](science/output_bound.md) |
-| What makes the quadratic bound sharp? | [Weak-signal channels and commuting outputs](science/sharp_examples.md) |
+| Which families give exact limits and separate commuting outputs? | [Weak-signal channels and commuting outputs](science/sharp_examples.md) |
 | What happens for identity, classical, measurement and depolarizing channels? | [Worked channel comparisons](science/examples.md) |
 | What is the physical conclusion, and what remains open? | [Interpretation](science/interpretation.md) |
 | What is inherited and what changes relative to earlier work? | [Related work](references/RELATED_WORK.md) and [bibliography](references/references.bib) |
@@ -42,13 +44,13 @@ With the dependencies in [verification/requirements.txt](verification/requiremen
 python3 verification/run_all.py
 ```
 
-The checks reconstruct the amplification inequalities on finite matrices, verify the depolarizing limits at high precision, and test the weak-signal construction against explicit spectra.
+The checks cover both amplification estimates, depolarizing limits at high precision, and selected weak-signal coefficients and attaining examples.
 
 ## Scope
 
 The bounded system is the output of one channel use. The receiver's share of the preshared entanglement is unrestricted. The ordinary capacity allows collective encoding and decoding across many independent uses; no general single-letter formula for it is assumed.
 
-The exact optimal constant remains open. The explicit measure-and-prepare example uses an input dimension exponential in the number of output directions. Both of its absolute capacities vanish in the weak-signal limit.
+The weak-signal statements take the signal strength to zero at fixed dimensions, replacer, and perturbation. Both rates vanish quadratically in that limit. The global sharp order for outputs much larger than inputs, the general exact optimal constant, and capacity with a finite entanglement budget remain open here.
 
 ## Purpose and contact
 
