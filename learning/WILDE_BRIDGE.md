@@ -1,10 +1,10 @@
-# From Wilde to the output-dimension theorem
+# From Wilde to the input and output dimension laws
 
-[Learning route](README.md) · [30-milestone map](MILESTONES.md) · [Exact theorem](../science/output_bound.md#the-theorem)
+[Learning route](README.md) · [30-milestone map](MILESTONES.md) · [Output bound](../science/output_bound.md#the-theorem) · [Joint dimension laws](../science/joint-dimensions.md)
 
 Alice sends classical messages through a noisy quantum channel. Bob tries to recover them from the received systems. Sharing entanglement before transmission changes the correlations available to the encoder and decoder, and can increase the reliable rate even when the transmitted system is a single qubit.
 
-This project determines how the largest possible multiplicative gain grows with the dimension of the system delivered per channel use. The answer compares two rates of the same channel: its ordinary classical capacity $`C(T)`$ and its entanglement-assisted capacity $`C_E(T)`$. A bound on either rate separately does not control their ratio when both rates approach zero.
+This project determines how the largest multiplicative gain depends on the dimensions of the input and the system delivered per channel use. It compares the ordinary classical capacity $`C(T)`$ and entanglement-assisted capacity $`C_E(T)`$ of the same channel. Their ratio can remain large even as both rates approach zero.
 
 ## The selected source
 
@@ -45,7 +45,7 @@ The [model](../science/model.md#communication-task) uses independent repeated ap
 
 The worked example below uses bits, as in the textbook. The analytical proof uses natural logarithms and nats. Divide every entropy and capacity in that proof by $`\ln2`$ to obtain bits; the multiplier is unchanged.
 
-Two geometric parameters enter later: $`b=\mathrm{rank}T(I_A)`$ counts the common output support, and $`r`$ counts the real affine directions in the output-state image. In particular, $`r\le b^2-1`$. The receiver's preshared entanglement register is not included in $`b`$; it remains unrestricted. See [effective output dimension](../science/model.md#effective-output-dimension).
+The proof uses the input dimension $`a=\dim A`$, the common output support dimension $`b=\mathrm{rank}T(I_A)`$, and the real affine dimension $`r\le b^2-1`$ of the output-state image. For a pure joint input, its Schmidt rank $`k\le a`$ counts the occupied input directions. Bob may use an unrestricted preshared entanglement register in the coding problem. The dimension $`b`$ counts only the system delivered by the channel. See [effective output dimension](../science/model.md#effective-output-dimension).
 
 ## Worked example: a noisy qubit with two communication schemes
 
@@ -103,10 +103,10 @@ Conditioned on Alice's label $`U`$, the joint output is
  +(1-q)\frac{I_4}{4}.
 ```
 
-The Bell measurement returns the intended label with probability $`a=(1+3q)/4`$ and each of the three other labels with probability $`t=(1-q)/4`$. With a uniform four-label alphabet, the output entropy is two bits and the conditional entropy is $`H_2(a,t,t,t)`$. Coding across many uses attains
+The Bell measurement returns the intended label with probability $`p_{\rm hit}=(1+3q)/4`$ and each of the three other labels with probability $`u=(1-q)/4`$. With a uniform four-label alphabet, the output entropy is two bits and the conditional entropy is $`H_2(p_{\rm hit},u,u,u)`$. Coding across many uses attains
 
 ```math
-C_E(D_{2,q})=2-H_2(a,t,t,t).
+C_E(D_{2,q})=2-H_2(p_{\rm hit},u,u,u).
 ```
 
 The general assisted-capacity formula, together with the symmetry of this channel, establishes optimality; the [depolarizing comparison](../science/examples.md#3-depolarizing-channels-two-distinct-limits) supplies the argument and its primary sources. The received channel system is still one qubit, so $`b=2`$ in both schemes. Bob's additional qubit was supplied by the preshared resource.
@@ -229,10 +229,22 @@ Wilde’s assisted-capacity theorem identifies the maximum on the left with $`C_
 
 A measure-and-prepare channel can give each of the $`b^2-1`$ traceless Hermitian output directions an independent role. Anticommuting input observables constrain the ordinary output displacements to a Euclidean ball. A maximally entangled input instead puts a distinct reference correlation in each of those directions. In the weak-signal limit the ordinary and assisted quantities are both quadratic in signal size, and their ratio approaches $`b^2-1`$. For commuting outputs there are at most $`b-1`$ independent directions. An argument that resolves one classical event at a time gives $`C_E\le bC`$, and the diagonal version of the family yields a ratio approaching $`b-1`$.
 
-The [sharp-order families](../science/sharp_examples.md) give the construction and entropy calculation. [Shor’s additivity theorem](../references/RELATED_WORK.md#shor2002) ensures that the single-use Holevo quantity equals the full ordinary capacity for these entanglement-breaking channels. The exact universal multiplier remains open.
+The [Clifford families](../science/sharp_examples.md) give the construction and entropy calculation. [Shor’s additivity theorem](../references/RELATED_WORK.md#shor2002) ensures that the single-use Holevo quantity equals the full ordinary capacity for these entanglement-breaking channels.
+
+### 7. Count occupied input directions in the same metric
+
+Step 4 sums over output coordinates. Another estimate sums over pairs of input Schmidt vectors. Each diagonal input block contributes at most $`M`$ in squared BKM norm. For two distinct Schmidt vectors, average the output squared norms of their equal superpositions over the relative phase. The result gives a bound of $`2M`$ on the squared norm of the off-diagonal block. Combining these block estimates with the Schmidt weights replaces $`2rM`$ by $`\min\{2r,4k-3\}M`$ in step 5.
+
+The same regularized reference works for both counts. Substituting $`k\le a`$ yields a uniform gain bound of order $`\min\{a+b,b^2\}`$. When $`2\le b\le a`$, the upper order becomes $`\min\{a,b^2-1\}`$, and the construction below supplies the matching lower order. See the [joint dimension proof](../science/joint-dimensions.md).
+
+### 8. Compare weak-signal gain with exact saturation
+
+A fixed full-rank replacer lets both capacities be expanded in the same output metric. The ordinary leading coefficient measures the largest ensemble variance of the output image. The assisted coefficient measures the quadratic size of the joint perturbation after its output marginal is removed. At a maximally mixed replacer, a complex Gaussian average bounds the assisted-to-ordinary coefficient ratio by $`\min\{r,k+1\}`$ for a Schmidt-rank-$`k`$ input. The qubit example has $`r=3`$ and $`k=2`$, and its limiting ratio of three reaches both terms of the bound.
+
+With a fixed full-rank replacer, traceless Gaussian observables produce $`\min\{a,b^2-1\}`$ directions with a bounded ordinary image radius and accumulated reference correlations. These measure-and-prepare channels reach the matching order with input dimension proportional to $`b^2`$ when the aim is quadratic gain in $`b`$. Exact saturation of the local $`r`$ bound at the maximally mixed replacer, for $`r\ge2`$, forces anticommutation on the occupied input subspace and Schmidt rank at least $`2^{\lfloor r/2\rfloor}`$. Thus the dimension cost of exact saturation can be much larger than the dimension needed for the right order. See the [local law and saturation proof](../science/joint-dimensions.md).
 
 ## Connect this bridge to the project map
 
-The [background milestones M01–M14](MILESTONES.md#background-preliminaries) assemble the channel, entropy, capacity, support, and geometric concepts needed to state the comparison. The [narrative milestones M15–M30](MILESTONES.md#narrative-innovation) connect the regularized Holevo center, complete amplification, communication rates, and matching channel families.
+The [background milestones M01–M14](MILESTONES.md#background-preliminaries) assemble the channel, entropy, capacity, support, and geometric concepts needed to state the comparison. The [narrative milestones M15–M30](MILESTONES.md#narrative-innovation) connect the regularized Holevo center to both amplification estimates, communication rates, and the different costs of order-sharp gain and exact saturation.
 
-For a direct mathematical route, continue with [BKM geometry](../science/bkm_geometry.md), the [output-dimension proof](../science/output_bound.md), and the [precise comparison with earlier work](../references/RELATED_WORK.md#position-of-the-result).
+For a direct mathematical route, continue with [BKM geometry](../science/bkm_geometry.md), the [output-dimension proof](../science/output_bound.md), the [joint dimension laws](../science/joint-dimensions.md), and the [comparison with earlier work](../references/RELATED_WORK.md#position-of-the-result).

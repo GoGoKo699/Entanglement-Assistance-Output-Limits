@@ -1,6 +1,6 @@
 # Model and exact claims
 
-[Repository overview](../README.md) · [Proof](output_bound.md) · [Examples](examples.md)
+[Repository overview](../README.md) · [Joint-dimension law](joint-dimensions.md) · [Output bound](output_bound.md) · [Examples](examples.md)
 
 ## Communication task
 
@@ -62,7 +62,7 @@ where $`\psi_{RA}`$ is any purification of $`\rho_A`$. Thus a bound valid for ev
 
 ## Effective output dimension
 
-Let $`\mathcal S(A)`$ denote the input state space, and define
+Write $`a=\dim A`$ for the channel input dimension. Let $`\mathcal S(A)`$ denote the input state space, and define
 
 ```math
 \mathcal S_T=T(\mathcal S(A)),
@@ -100,6 +100,21 @@ The input dimension can be arbitrarily large and the nonzero output eigenvalues 
 
 For positive $`C(T)`$, the theorem bounds the ratio by $`O(b^2)`$. The [measure-and-prepare witness](sharp_examples.md) makes the ratio approach $`b^2-1`$ at each fixed $`b\ge2`$, so the quadratic order is sharp. When the output image consists of mutually commuting states, simultaneous diagonalization gives $`r\le b-1`$. The diagonal witness approaches $`b-1`$, and the [commuting-output proof](sharp_examples.md#commuting-outputs-give-a-linear-law) gives $`C_E\le b\chi`$.
 
+## Joint-dimension and weak-signal results
+
+The [joint-dimension bound](joint-dimensions.md) adds the sender dimension to the same uniform converse.
+
+```math
+C_E(T)\le
+\left(\sqrt{2(e-1)\min\{2r,4a-3\}}+\sqrt b\right)^2\,\chi(T).
+```
+
+At fixed dimensions $`2\le b\le a`$, the supremum of $`C_E(T)/C(T)`$ over channels with positive ordinary capacity is $`\Theta(\min\{a,b^2-1\})`$. The upper bound holds at every signal strength. The lower bound uses weak entanglement-breaking channels. The order also holds for $`b\le K a`$ with fixed $`K`$, with constants allowed to depend on $`K`$.
+
+For a positive definite output state $`\sigma`$, define the replacer $`R_\sigma(X)=\mathrm{Tr}(X)\sigma`$. A weak signal has the form $`T_t=R_\sigma+tL`$, with a fixed nonconstant affine output perturbation on states. The local ratio first takes $`t\to0`$ at fixed $`a,b,\sigma,L`$. Optimizing that limit over perturbations gives $`\Theta(\min\{a,b^2-1\})`$ for every $`a,b\ge2`$ and each fixed full-rank $`\sigma`$. The required signal size can depend on the dimensions, the spectrum of $`\sigma`$, and the perturbation.
+
+For the maximally mixed replacer, a BSST witness of Schmidt rank $`k`$ has a limiting contribution to the ratio bounded by $`\min\{r,k+1\}`$. The optimized local ratio is exactly $`a+1`$ when $`b\ge a\ge 2`$. When $`r\ge2`$, attaining the exact affine-dimension value $`r`$ requires Schmidt rank at least $`2^{\lfloor r/2\rfloor}`$. This rank is a property of the mutual-information witness in the unlimited-assistance model.
+
 ## Proof route and interpretation
 
 The [BKM geometry page](bkm_geometry.md) develops the metric comparisons. The [main proof](output_bound.md) starts with the mean state of an optimal Holevo ensemble:
@@ -108,4 +123,4 @@ The [BKM geometry page](bkm_geometry.md) develops the metric comparisons. The [m
 2. Use the relative-entropy radius to bound the image's BKM squared radius by $`2(e-1)\chi(T)`$.
 3. Resolve the joint channel perturbation into $`r`$ Hermitian output directions and account for the regularization in the reference state.
 
-The [sharp examples](sharp_examples.md) employ the same classical-capacity definitions as the converse. The exact worst-case constant, the requirements on input size, and the gain with finite entanglement supply are separate questions. See [interpretation](interpretation.md).
+The [joint proof](joint-dimensions.md) uses the same regularized center for a second amplification estimate over the input Schmidt directions. The local calculation uses a fixed full-rank replacer and compares the two capacities to their respective quadratic coefficients. The [interpretation](interpretation.md) relates these regimes to the size of the sender and the gain possible with commuting outputs.

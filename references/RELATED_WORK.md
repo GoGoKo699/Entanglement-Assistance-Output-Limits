@@ -6,19 +6,14 @@ Machine-readable records for every source below are in [references.bib](referenc
 
 ## Position of the result
 
-For a channel $`T`$ whose output-state image has real affine dimension $`r`$ and effective support dimension $`b`$, the [main proof](../science/output_bound.md) gives
-
-```math
-C_E(T)\le \bigl(2\sqrt{(e-1)r}+\sqrt b\bigr)^2\,\chi(T).
-```
-
-The [measure-and-prepare family](../science/sharp_examples.md) approaches ratio $`b^2-1`$ at fixed $`b`$. These results give the sharp quadratic order of the largest gain, uniformly over finite input dimensions and output spectra.
+The [output-dimension proof](../science/output_bound.md) gives a uniform bound in the affine image dimension $`r`$ and effective output dimension $`b`$. The [joint-dimension proof](../science/joint-dimensions.md) includes the input dimension $`a`$ and bounds the ratio by order $`\min\{a+b,b^2\}`$. The Gaussian measure-and-prepare construction matches the order $`\min\{a,b^2-1\}`$ when $`2\le b\le a`$ globally and at every aspect ratio for weak signals around a fixed full-rank replacer.
 
 | Result | Dependence of the bound | Relation to this project |
 |---|---|---|
-| [Wolff et al. (2025)](#wolff2025) | Input dimension, asymptotically $`8d_A^2/\ln d_A`$. The proof also bounds $`C_E/\chi`$. | Asks whether an output-only bound exists. |
+| [Wolff et al. (2025)](#wolff2025) | Input dimension, asymptotically $`8d_A^2/\ln d_A`$. The proof also bounds $`C_E/\chi`$. | Supplies an input phase-superposition estimate and asks about a linear input bound and an output-only bound. |
 | [Belzig (2023), Theorem 4.4.2](#belzig2023) | Near the associated replacer, $`4\ln(2)d_B^5/\lambda_{\min}(\sigma_*)`$. | Retains the least eigenvalue of the output divergence center. |
-| Present theorem | Effective output support and affine image dimension. | Gives the sharp quadratic order in the output dimension, including rank-changing limits. |
+| [Output-dimension bound](../science/output_bound.md) | Effective output support and affine image dimension. | Gives the quadratic output order uniformly over sender dimensions and output spectra. |
+| [Joint-dimension law](../science/joint-dimensions.md) | Input dimension, effective output support, and affine image dimension. | Uses both amplification estimates at the same regularized output reference and matches the joint order in the compressive regime. |
 
 [Chitambar et al.](#chitambar2023) study a one-use guessing score called communication value. Its output-dimension bounds pertain to that score. The capacities here concern reliable transmission over arbitrarily many independent uses.
 
@@ -26,9 +21,9 @@ The [measure-and-prepare family](../science/sharp_examples.md) approaches ratio 
 
 The [Bennett–Shor–Smolin–Thapliyal theorem](#bsst2002) identifies $`C_E(T)`$ with a maximum over reference–output mutual information. The coding theorems of [Schumacher–Westmoreland](#schumacher1997) and [Holevo](#holevo1998) supply $`\chi(T)\le C(T)`$. [Gao–Rouzé](#gaorouze2022) and [Wolff et al.](#wolff2025) provide the relative-entropy and BKM estimates used in the argument.
 
-The proof starts with the mean of an optimal Holevo ensemble and uses its relative-entropy radius. A binary divergence inequality controls the whole output image by a constant multiple of that state plus $`\chi(T)I`$. Comparing relative entropy along the image segment then bounds its BKM radius. The BKM amplification still resolves only the $`r`$ active output directions. An explicit trace correction accounts for the added identity.
+The global proof starts with the mean of an optimal Holevo ensemble. A binary divergence inequality controls the output image by a constant multiple of that state plus $`\chi(T)I`$. The output-coordinate estimate counts the $`r`$ active directions. The input-coordinate estimate uses the phase-superposition method of [Wolff et al.](#wolff2025) to control off-diagonal Schmidt blocks, applied here in the same regularized output geometry. An explicit trace correction accounts for the added identity. This yields a bound linear in $`a+b`$ alongside the quadratic output bound. The general question of a bound linear in $`a`$ regardless of $`b`$ remains open here.
 
-The lower example uses anticommuting Hermitian unitaries to keep the output coefficient vector of every unassisted input in a Euclidean unit ball. A maximally entangled input contributes all output directions to the leading squared joint norm. [Shor's theorem](#shor2002) identifies the unassisted capacity of this measure-and-prepare channel with its single-use Holevo quantity. The [spin-unitary background](#farenick2021) supplies the operator geometry.
+At a full-rank replacer the BKM form gives both leading coefficients. The Gaussian witness uses the standard concentration-and-net method for random matrix geometry. [Aubrun–Szarek–Werner](#aubrun2011) develop related random-subspace geometry for the distinct problem of minimum-output-entropy additivity. The Clifford witness uses the [spin-unitary relations](#farenick2021) to attain the exact local affine-dimension factor, and local equality in the maximally mixed case forces those relations on the optimizing Schmidt support. [Shor's theorem](#shor2002) identifies ordinary capacity with the single-use Holevo quantity for both measure-and-prepare witnesses.
 
 ## Established benchmark channels
 
@@ -44,7 +39,7 @@ The worked trine example uses [Shor's additivity theorem](#shor2002) and [Holevo
 
 Lasse H. Wolff, Paula Belzig, Matthias Christandl, Bergfinnur Durhuus, and Marco Tomamichel, “Fundamental Limit on the Power of Entanglement Assistance in Quantum Communication,” *Physical Review Letters* **134**, 020802 (2025). [DOI: 10.1103/PhysRevLett.134.020802](https://doi.org/10.1103/PhysRevLett.134.020802). [arXiv:2408.17290](https://arxiv.org/abs/2408.17290).
 
-Relevant locations in [version 3](https://arxiv.org/html/2408.17290v3): Section II for the bound; Section III.2 and Appendix equations (21)–(22) for the inherited BKM estimates; the end of Section III.3 for replacing $`C`$ by $`\chi`$; Section IV for the output-only open question.
+In [version 3](https://arxiv.org/html/2408.17290v3), Section II states the bound, and Section III.2 and Appendix equations (21)–(22) give the inherited BKM estimates. Section III.3, equations (13)–(18), supplies the phase-superposition estimate and explains how the ratio bound also holds with $`\chi`$ in the denominator. Section IV poses both dimension questions.
 
 <a id="belzig2023"></a>
 
@@ -108,7 +103,7 @@ Relevant locations: equations (23)–(26) and the subsequent discussion of the t
 
 Peter W. Shor, “Additivity of the Classical Capacity of Entanglement-Breaking Quantum Channels,” *Journal of Mathematical Physics* **43**(9), 4334–4340 (2002). [DOI: 10.1063/1.1498000](https://doi.org/10.1063/1.1498000). [arXiv:quant-ph/0201149](https://arxiv.org/abs/quant-ph/0201149).
 
-This supplies $`C=\chi`$ for the trine measurement and the Clifford measure-and-prepare examples.
+This supplies $`C=\chi`$ for the trine measurement and the Clifford and Gaussian measure-and-prepare examples.
 
 <a id="holevo2012"></a>
 
@@ -129,3 +124,9 @@ Eric Chitambar, Ian George, Brian Doolittle, and Marius Junge, “The Communicat
 ### Farenick et al. — Spin unitaries
 
 Douglas Farenick, Farrah Huntinghawk, Adili Masanika, and Sarah Plosker, “Complete Order Equivalence of Spin Unitaries,” *Linear Algebra and its Applications* **610**, 1–28 (2021). The spin-unitary relations are background for the Clifford geometry. [arXiv:2006.06810](https://arxiv.org/abs/2006.06810).
+
+<a id="aubrun2011"></a>
+
+### Aubrun–Szarek–Werner — Random matrix subspaces
+
+Guillaume Aubrun, Stanisław Szarek, and Elisabeth Werner, “Hastings's Additivity Counterexample via Dvoretzky's Theorem,” *Communications in Mathematical Physics* **305**, 85–97 (2011). [DOI: 10.1007/s00220-010-1172-y](https://doi.org/10.1007/s00220-010-1172-y). [arXiv:1003.4925](https://arxiv.org/abs/1003.4925).

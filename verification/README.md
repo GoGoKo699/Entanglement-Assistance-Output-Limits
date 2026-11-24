@@ -1,6 +1,6 @@
 # Verification
 
-[Scientific account](../science/README.md) · [Main proof](../science/output_bound.md) · [Worked examples](../science/examples.md)
+[Scientific account](../science/README.md) · [Output bound](../science/output_bound.md) · [Joint dimension law](../science/joint-dimensions.md) · [Worked examples](../science/examples.md)
 
 ## Run the finite checks
 
@@ -11,13 +11,14 @@ python3 -m pip install -r verification/requirements.txt
 python3 verification/run_all.py
 ```
 
-The runner compares the amplification and depolarizing reports with the files in [expected/](expected/), then checks the weak-signal family. It exits unsuccessfully if an inequality or reference comparison fails.
+The runner compares the amplification and depolarizing reports with the files in [expected/](expected/), then checks the weak-signal families and joint dimension laws. It exits unsuccessfully if an inequality or reference comparison fails.
 
 | Check | Purpose | Scope |
 |---|---|---|
 | [Amplification audit](audit_amplification.py) | Reconstruct the BKM quadratic form and its successive coefficient, Hermitian-moment and image-coordinate bounds | 120 deterministic random finite maps, plus an exact support-compression regression |
 | [Depolarizing limits](check_depolarizing_limits.py) | Verify capacity formulas against spectra, zero/identity endpoints, and two distinct limiting regimes | 100 decimal digits; 12 weak-signal rows, 6 negative-boundary rows and 3 endpoint dimensions |
 | [Weak-signal output examples](check_sharp_output.py) | Check the Clifford relations, measure-and-prepare realization, spectral capacity bounds, and limiting coefficients | Full qubit and qutrit outputs and commuting qutrit outputs |
+| [Joint dimension laws](check_joint_dimensions.py) | Check the input-sensitive BKM estimate, exact weak-signal coefficients, and dimension of the Clifford witnesses | Two uniform-output sizes, one seeded Gaussian qutrit-output example, and Clifford families with two through seven directions |
 
 ## Complete-amplification audit
 
@@ -46,6 +47,14 @@ The negative-boundary ordinary capacity involves cancellation between logarithms
 ## Weak-signal output examples
 
 The script constructs the Clifford observables and the output bases in [the sharpness proof](../science/sharp_examples.md). It checks the measure-and-prepare Choi matrix and the entropy bounds at nonzero signal strength. It also checks the joint quadratic form for nonuniform and rank-deficient Schmidt distributions. The displayed coefficients converge to the values in the proof. The proof identifies the capacity ratio by optimizing over all inputs.
+
+## Joint dimension laws
+
+For a uniform replacer the script reconstructs the BKM form in both joint matrix and input-coordinate form. It tests rank-deficient and uneven Schmidt distributions and obtains the exact limiting ratios 3 for input/output dimensions 2 and 2, and 4 for dimensions 3 and 4.
+
+For a nonuniform qutrit replacer and nine-dimensional input, a seeded Gaussian example checks both amplification bounds in a shared BKM metric. The largest eigenvalue on the symmetric tensor square upper-bounds the pure-state output radius squared. This gives a finite upper bound on the ordinary capacity using the explicit measure-and-prepare realization. The mutual information from a maximally entangled input then gives a lower bound on the capacity ratio exceeding 1 at the chosen nonzero signal strength. A separate uneven rank-three input checks the two-sided comparison between mutual information and the local quadratic form.
+
+The Clifford check implements the even and odd minimal-size constructions, including the last generator for odd counts. It verifies the anticommutation identities and that each simultaneous sign sector of the commuting involutions is one-dimensional in these witnesses.
 
 ## Regenerate a report deliberately
 

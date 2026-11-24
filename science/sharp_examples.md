@@ -30,7 +30,7 @@ For an input state $`\rho`$, put $`v_j=\mathrm{Tr}(\Gamma_j\rho)`$. Since $`(\su
 \biggl\{u+t\sum_{j=1}^m v_jF_j:\Vert v\Vert_2\le1\biggr\}.
 ```
 
-It has real affine dimension $`m`$ and effective output dimension $`b`$. Take $`m=b^2-1`$ for all traceless Hermitian directions or $`m=b-1`$ for all traceless diagonal directions. The displayed realization of the full Hermitian case uses an input dimension exponential in $`b^2`$.
+It has real affine dimension $`m`$ and effective output dimension $`b`$. Take $`m=b^2-1`$ for all traceless Hermitian directions or $`m=b-1`$ for all traceless diagonal directions. The displayed realization of the full Hermitian case uses an input dimension exponential in $`b^2`$. The [joint-dimension analysis](joint-dimensions.md#order-optimal-examples-with-smaller-inputs) achieves quadratic order with an input dimension proportional to $`b^2`$ and [identifies the dimension cost of exact saturation](joint-dimensions.md#exact-saturation-of-the-output-rank-coefficient).
 
 ## The two capacities in the weak-signal limit
 
