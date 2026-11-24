@@ -49,11 +49,36 @@ jobs:
       - name: Compare every hosted mathematical expression
         run: |
           export NODE_PATH="$RUNNER_TEMP/math-runtime/node_modules"
-          node verification/hosted_math/capture_hosted_math.cjs \
-            --root "$GITHUB_WORKSPACE" \
-            --repository "$GITHUB_REPOSITORY" \
-            --revision "$CAPTURE_REVISION" \
-            --output "$RUNNER_TEMP/hosted-math"
+          capture() {
+            local output="$1"
+            shift
+            node verification/hosted_math/capture_hosted_math.cjs \
+              --root "$GITHUB_WORKSPACE" \
+              --repository "$GITHUB_REPOSITORY" \
+              --revision "$CAPTURE_REVISION" \
+              --output "$output" "$@"
+          }
+          initial="$RUNNER_TEMP/hosted-math"
+          if capture "$initial"; then
+            exit 0
+          fi
+
+          python3 - "$initial/capture-state.json" <<'PYTHON'
+          import json
+          import re
+          import sys
+
+          with open(sys.argv[1]) as state:
+              failures = json.load(state)["failures"]
+          if not failures or not all(
+              item["category"] == "transport_failure"
+              and re.fullmatch(r"Error: HTTP (502|503|504)", item["reason"])
+              for item in failures
+          ):
+              raise SystemExit(1)
+          PYTHON
+
+          capture "$RUNNER_TEMP/hosted-math-resumed" --resume-from "$initial"
       - name: Retain the captures and comparison reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -62,5 +87,6 @@ jobs:
           path: |
             ${{ runner.temp }}/hosted-probe
             ${{ runner.temp }}/hosted-math
+            ${{ runner.temp }}/hosted-math-resumed
           if-no-files-found: error
           retention-days: 14

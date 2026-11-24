@@ -143,4 +143,3 @@ Suppose $`r\ge2`$ and a rank-$`k`$ input gives local ratio $`r`$. Each compresse
 The $`\lfloor r/2\rfloor`$ involutions $`\mathrm{i}\Gamma_{2l-1}\Gamma_{2l}`$ commute. Conjugation by $`\Gamma_{2l-1}`$ flips exactly the $`l`$th sign in their joint eigenspaces. Every sign pattern has equal nonzero multiplicity, so $`k`$ is a positive multiple of $`2^{\lfloor r/2\rfloor}`$. A Clifford representation of that minimum size attains $`r`$ with a maximally entangled input, using tensor Pauli strings and their chirality product for odd $`r`$.
 
 This dimension cost concerns exact saturation at the maximally mixed replacer. The Gaussian examples achieve the same order with a smaller input. Here the Schmidt rank describes a single-use capacity witness under standard unlimited preshared entanglement. A fixed operational supply per channel use requires a separate capacity model.
-
