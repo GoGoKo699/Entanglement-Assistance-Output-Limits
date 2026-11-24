@@ -240,6 +240,12 @@ The route moves from a single transmitted state to joint systems, information me
 
 **Source pointers:** [Why proximity to a replacer matters](../science/interpretation.md#why-proximity-to-a-replacer-matters), [prior bounds](../references/RELATED_WORK.md#position-of-the-result), [joint dimension laws](../science/joint-dimensions.md).
 
+<a id="narrative-innovation"></a>
+
+## Phase 2: Narrative/innovation
+
+The argument begins with one channel’s achievable outputs. Its Holevo-radius center gives a spectrum-sensitive estimate that can be applied to both output coordinates and input Schmidt blocks. Weak-signal channels show how large the gain can be and how the input cost changes at exact saturation.
+
 <a id="m15"></a>
 
 ### M15 — A Holevo-radius center with a spectral floor
